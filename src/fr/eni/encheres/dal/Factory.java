@@ -9,18 +9,18 @@ public abstract class Factory {
 	}
 
 	public static Icategorie getCategorie() {
-		return new Categorie();
+		return new DAOCategorie();
 	}
 
 	public static Ienchere getEnchere() {
-		return new Enchere();
+		return new DAOEnchere();
 	}
 
 	public static Iretrait getRetrait() {
-		return new Retrait();
+		return new DAORetrait();
 	}
 
 	public static Iutilisateur getUtilisateur() {
-		return new ArticleVendu();
+		return new DAOArticleVendu();
 	}
 }
