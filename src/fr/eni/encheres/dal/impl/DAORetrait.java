@@ -1,7 +1,94 @@
 package fr.eni.encheres.dal.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.dal.Iretrait;
 
 public class DAORetrait implements Iretrait {
+	private static final String CREATE = "INSERT INTO RETRAIT(no_article, rue, code_postal, ville) VALUES(?,?,?,?);";
+	private static final String READ = "SELECT * FROM RETRAIT;";
+	private static final String UPDATE = "UPDATE RETRAIT SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?;";
+	private static final String DELETE = "DELETE FROM RETRAIT WHERE no_article =?;";
 
+	public void create(Retrait retrait) {
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, retrait.getNo_article());
+			pstmt.setString(2, retrait.getRue());
+			pstmt.setString(3, retrait.getCode_postal());
+			pstmt.setString(4, retrait.getVille());
+			pstmt.executeUpdate();
+
+			/*
+			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
+			 * retrait.setIdentifiant(rs.getInt(1)); }
+			 */
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public ArrayList<Retrait> read() {
+
+		ArrayList<Retrait> res = new ArrayList<Retrait>();
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			Statement stmt = cnx.createStatement();
+
+			ResultSet rs = stmt.executeQuery(READ);
+
+			while (rs.next()) {
+				Retrait temp = new Retrait(rs.getInt("no_article"), rs.getString("rue"), rs.getString("code_postal"),
+						rs.getString("ville"));
+				res.add(temp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	public void update(Retrait retrait) {
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, retrait.getNo_article());
+			pstmt.setString(2, retrait.getRue());
+			pstmt.setString(3, retrait.getCode_postal());
+			pstmt.setString(4, retrait.getVille());
+			pstmt.executeUpdate();
+
+			/*
+			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
+			 * retrait.setIdentifiant(rs.getInt(1)); }
+			 */
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void delete(Retrait retrait) {
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(DELETE, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, retrait.getNo_article());
+			pstmt.executeUpdate();
+
+			/*
+			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
+			 * retrait.setIdentifiant(rs.getInt(1)); }
+			 */
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
