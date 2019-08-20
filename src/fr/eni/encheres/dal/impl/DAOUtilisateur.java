@@ -11,10 +11,10 @@ import fr.eni.encheres.bo.Utilisateur;
 
 public class DAOUtilisateur implements Iutilisateur {
 
-	private static final String CREATE = "INSERT INTO UTILISATEUR(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?);";
-	private static final String READ = "SELECT * FROM UTILISATEUR;";
-	private static final String UPDATE = "UPDATE UTILISATEUR SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?;";
-	private static final String DELETE = "DELETE FROM UTILISATEUR WHERE no_utilisateur =?;";
+	private static final String CREATE = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+	private static final String READ = "SELECT * FROM UTILISATEURS;";
+	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?;";
+	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur =?;";
 
 	public void create(Utilisateur utilisateur) {
 
