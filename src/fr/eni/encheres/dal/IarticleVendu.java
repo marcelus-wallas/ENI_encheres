@@ -13,4 +13,5 @@ public interface IarticleVendu {
 	public void update(ArticleVendu article_vendu);
 
 	public void delete(ArticleVendu article_vendu);
+
 }
