@@ -20,7 +20,7 @@
 
     <!-- top bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">ENI-Encheres</a>
+      <a class="navbar-brand" href="./acceuil(4-5).html">ENI-Encheres</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,22 +28,22 @@
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Enchères</a>
+            <a class="nav-link" href="./acceuil(4-5).html">Enchères</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Vender un article</a>
+            <a class="nav-link" href="./enchere_nouveau(9).html">Vender un article</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Mon profil</a>
+            <a class="nav-link" href="./compte_mon_profil(7).html">Mon profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Déconnexion</a>
+            <a class="nav-link" href="./index(1).html">Déconnexion</a>
           </li>
         </ul>
       </div>
     </nav>
 
-        <!-- titre -->
+    <!-- titre -->
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-auto">
@@ -52,9 +52,148 @@
       </div>
     </div>
 
+    <!-- Main content -->
+    <div class="row justify-content-md-center" style="margin-top:2rem;">
+      <div class="col col-lg-8">
+        <form>
+
+          <div class="form-group row">
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Pseudo : </label>
+                <div class="col-sm-8">
+                  <div id="inputPseudo"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Nom : </label>
+                <div class="col-sm-8">
+                  <div id="inputNom"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Prénom : </label>
+                <div class="col-sm-8">
+                  <div id="inputPrenom"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Email : </label>
+                <div class="col-sm-8">
+                  <div id="inputEmail"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Téléphone : </label>
+                <div class="col-sm-8">
+                  <div id="inputTelephone"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Rue : </label>
+                <div class="col-sm-8">
+                  <div id="inputRue"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Code postal : </label>
+                <div class="col-sm-8">
+                  <div id="inputCodePostal"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Ville : </label>
+                <div class="col-sm-8">
+                  <div id="inputVille"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Mot de passe actuel : </label>
+                <div class="col-sm-8">
+                  <div id="inputMotDePasse"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Nouveau mot de passe : </label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <label class="col-sm-4 col-form-label">Confirmation : </label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" placeholder="Confirmation">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center" style="margin-top:1rem;">
+      <div class="col-1">
+        <h6>Crédit : </h6>
+      </div>
+      <div class="col-3">
+        <div id="id_credit"></div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:1rem;">
+      <div class="col-6 d-flex align-items-end flex-column">
+        <!-- Enregistrer en base -->
+        <a href="./acceuil(4-5).html" class="btn btn-outline-success my-2 my-sm-0" role="button">Enregistrer</a>
+      </div>
+      <div class="col-6">
+        <!-- Supprimer en base -->
+        <a href="./index(1).html" class="btn btn-outline-success my-2 my-sm-0" role="button">Supprimer mon compte</a>
+      </div>
+    </div>
+
     <!-- export -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/compte_edition.js"></script>
   </body>
 </html>

@@ -20,7 +20,7 @@
 
     <!-- top bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">ENI-Encheres</a>
+      <a class="navbar-brand" href="./acceuil(4-5).html">ENI-Encheres</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,16 +28,16 @@
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Enchères</a>
+            <a class="nav-link" href="./acceuil(4-5).html">Enchères</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Vender un article</a>
+            <a class="nav-link" href="./enchere_nouveau(9).html">Vender un article</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Mon profil</a>
+            <a class="nav-link" href="./compte_mon_profil(7).html">Mon profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_authentification.html">Déconnexion</a>
+            <a class="nav-link" href="./index(1).html">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -78,6 +78,70 @@
               </div>
             </div>
           </form>
+          <div class="form-check">
+            <div class="row" style="margin:2rem;">
+              <div class="col-6">
+                <div id="achatAcceuilMenu">
+                  <div class="row">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="acceuilRadio" id="enchere" value="enchere" checked>
+                      <label class="form-check-label" for="enchereRadio">
+                        Achats
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <input type="checkbox" class="form-check-input" id="enchereOuverte">
+                    <label class="form-check-label" for="defaultCheck1">
+                      Enchère ouverte
+                    </label>
+                  </div>
+                  <div class="row">
+                    <input type="checkbox" class="form-check-input" id="enchereEnCours">
+                    <label class="form-check-label" for="defaultCheck1">
+                      mes enchères en cours
+                    </label>
+                  </div>
+                  <div class="row">
+                    <input type="checkbox" class="form-check-input" id="enchereRemportee">
+                    <label class="form-check-label" for="defaultCheck1">
+                      mes enchère remportées
+                    </label>
+                  </div>
+              </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="acceuilRadio" id="vente" value="vente">
+                    <label class="form-check-label" for="venteRadio">
+                      Mes ventes
+                    </label>
+                  </div>
+                </div>
+                <div id="venteAcceuilMenu">
+                  <div class="row">
+                    <input type="checkbox" class="form-check-input" id="venteEnCours">
+                    <label class="form-check-label" for="defaultCheck1">
+                      mes enchère remportées
+                    </label>
+                  </div>
+                  <div class="row">
+                    <input type="checkbox" class="form-check-input" id="venteNonDebutee">
+                    <label class="form-check-label" for="defaultCheck1">
+                      mes enchère remportées
+                    </label>
+                  </div>
+                  <div class="row">
+                    <input type="checkbox" class="form-check-input" id="venteTerminee">
+                    <label class="form-check-label" for="defaultCheck1">
+                      mes enchère remportées
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col my-auto">
           <div class="row justify-content-md-center">
@@ -91,5 +155,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/acceuil.js"></script>
   </body>
 </html>
