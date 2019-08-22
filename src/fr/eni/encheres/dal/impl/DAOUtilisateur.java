@@ -116,20 +116,20 @@ public class DAOUtilisateur implements Iutilisateur {
 	
 	public Utilisateur authentificationEmail(String email, String motDePasse) {
 
-		Utilisateur user = null;
+		Utilisateur user = new Utilisateur();
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			
 			PreparedStatement pstmt = cnx.prepareStatement(CONNEXION_EMAIL);
 			pstmt.setString(1, email );
 			pstmt.setString(2, motDePasse);
-			pstmt.executeQuery();
 			
 			ResultSet rs = pstmt.executeQuery();
-
-			user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
-					rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
-					rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
-					rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			while (rs.next()) {
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+						rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+						rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+						rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -139,20 +139,20 @@ public class DAOUtilisateur implements Iutilisateur {
 	
 	public Utilisateur authentificationPseudo(String pseudo, String motDePasse) {
 
-		Utilisateur user = null;
+		Utilisateur user = new Utilisateur();
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			
 			PreparedStatement pstmt = cnx.prepareStatement(CONNEXION_PSEUDO);
 			pstmt.setString(1, pseudo );
 			pstmt.setString(2, motDePasse);
-			pstmt.executeQuery();
 			
 			ResultSet rs = pstmt.executeQuery();
-
-			user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
-					rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
-					rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
-					rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			while (rs.next()) {
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+						rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+						rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+						rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
