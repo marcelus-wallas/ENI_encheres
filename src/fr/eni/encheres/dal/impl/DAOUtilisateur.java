@@ -15,6 +15,10 @@ public class DAOUtilisateur implements Iutilisateur {
 	private static final String READ = "SELECT * FROM UTILISATEURS;";
 	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?;";
 	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur =?;";
+	
+	//Compte Connexion
+	private static final String CONNEXION_EMAIL = "SELECT * FROM UTILISATEURS WHERE email = ? AND mot_de_passe =?;";
+	private static final String CONNEXION_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe =?;";
 
 	public void create(Utilisateur utilisateur) {
 
@@ -96,7 +100,7 @@ public class DAOUtilisateur implements Iutilisateur {
 	public void delete(Utilisateur utilisateur) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(DELETE, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement pstmt = cnx.prepareStatement(DELETE);
 			pstmt.setInt(1, utilisateur.getNo_utilisateur());
 			pstmt.executeUpdate();
 
@@ -109,4 +113,51 @@ public class DAOUtilisateur implements Iutilisateur {
 			e.printStackTrace();
 		}
 	}
+	
+	public Utilisateur authentificationEmail(String email, String motDePasse) {
+
+		Utilisateur user = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			
+			PreparedStatement pstmt = cnx.prepareStatement(CONNEXION_EMAIL);
+			pstmt.setString(1, email );
+			pstmt.setString(2, motDePasse);
+			pstmt.executeQuery();
+			
+			ResultSet rs = pstmt.executeQuery();
+
+			user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+					rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+					rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+					rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	public Utilisateur authentificationPseudo(String pseudo, String motDePasse) {
+
+		Utilisateur user = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			
+			PreparedStatement pstmt = cnx.prepareStatement(CONNEXION_PSEUDO);
+			pstmt.setString(1, pseudo );
+			pstmt.setString(2, motDePasse);
+			pstmt.executeQuery();
+			
+			ResultSet rs = pstmt.executeQuery();
+
+			user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+					rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+					rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+					rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
 }

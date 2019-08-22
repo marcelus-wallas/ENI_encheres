@@ -4,7 +4,7 @@ import fr.eni.encheres.dal.impl.*;
 
 public abstract class Factory {
 
-	public static Iutilisateur getArticleVendu() {
+	public static Iutilisateur getUtilisateur() {
 		return new DAOUtilisateur();
 	}
 
@@ -20,7 +20,7 @@ public abstract class Factory {
 		return new DAORetrait();
 	}
 
-	public static IarticleVendu getUtilisateur() {
+	public static IarticleVendu getArticleVendu() {
 		return new DAOArticleVendu();
 	}
 }
