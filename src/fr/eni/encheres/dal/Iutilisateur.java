@@ -13,5 +13,9 @@ public interface Iutilisateur {
 	public void update(Utilisateur utilisateur);
 
 	public void delete(Utilisateur utilisateur);
+
+	public Utilisateur authentificationEmail(String login, String motDePasse);
+
+	public Utilisateur authentificationPseudo(String login, String motDePasse);
 	
 }
