@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Authentification</title>
+    <title>Index</title>
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
@@ -28,7 +28,7 @@
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./index(1).html">Encheres</a>
+            <a class="nav-link" href="./compte_authentification(2).html">S'inscrire - se connecter</a>
           </li>
         </ul>
       </div>
@@ -38,67 +38,54 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-auto">
-          <h1>Authentification</h1>
+          <h1>Liste des enchères</h1>
         </div>
       </div>
     </div>
 
     <!-- Main content -->
-    <div class="container">
-      <div class="row justify-content-md-center" style="padding:2rem;">
-        <div class="col col-lg-8">
+    <div classe="container">
+      <div class="row" style="margin:2rem;">
+        <div class="col">
           <form>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Identifiant : </label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Identifiant">
-              </div>
+            <div class="row justify-content-md-center">
+              <h3>Filtres : </h3>
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </div>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Password : </label>
-              <div class="col-sm-9">
-                <input type="password" class="form-control" placeholder="Password">
+            <div class="form-group">
+              <div class="row" style="margin:2rem;">
+                <div class="col-4">
+                  <label>Catégorie</label>
+                </div>
+                <div class="col-8">
+                  <select class="form-control" id="filtreCategorie">
+                    <option>toutes</option>
+                    <option>cat 2</option>
+                    <option>cat 3</option>
+                    <option>cat 4</option>
+                    <option>cat 5</option>
+                  </select>
+                </div>
               </div>
             </div>
           </form>
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row justify-content-md-center" style="padding:2rem;">
-        <div class="col col-lg-8">
-          <div class="row">
-            <div class="col-6">
-              <a href="./accueil(4-5).html" class="btn btn-outline-success my-2 my-sm-0" role="button">Connexion</a>
-            </div>
-            <div class="col-6">
-              <div class="row">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox"> <!--  value="" -->
-                  <label class="form-check-label">
-                    Se souvenir de moi
-                  </label>
-                </div>
-              </div>
-              <div class="row">
-                <a href="#">Mot de passe oublié</a>
-              </div>
-            </div>
+        <div class="col my-auto">
+          <div class="row justify-content-md-center">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-      <div class="row justify-content-md-center">
-        <a href="./compte_creation(3).html" class="btn btn-outline-success my-2 my-sm-0" role="button">Créer un compte</a>
-      </div>
-    </div>
+    <div id="enchereToPrint"></div>
 
     <!-- export -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/tools/logger.js"></script>
+    <script src="../js/tools/htmlBuiler.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>
