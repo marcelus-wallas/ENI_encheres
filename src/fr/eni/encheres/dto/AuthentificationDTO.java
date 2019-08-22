@@ -19,7 +19,7 @@ public class AuthentificationDTO {
 		this.email = email;
 		this.password = password;
 	}
-
+	
 	public String getPseudo() {
 		return pseudo;
 	}
