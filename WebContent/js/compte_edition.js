@@ -85,13 +85,17 @@ function htmlCredit() {
   return html
 }
 
-$("#inputPseudo").replaceWith(htmlInputPseudo())
-$("#inputNom").replaceWith(htmlInputNom())
-$("#inputPrenom").replaceWith(htmlInputPrenom())
-$("#inputEmail").replaceWith(htmlInputEmail())
-$("#inputTelephone").replaceWith(htmlInputTelephone())
-$("#inputRue").replaceWith(htmlInputRue())
-$("#inputCodePostal").replaceWith(htmlInputCodePostal())
-$("#inputVille").replaceWith(htmlInputVille())
-$("#inputMotDePasse").replaceWith(htmlInputMotDePasse())
-$("#id_credit").replaceWith(htmlCredit())
+function main() {
+  $("#inputPseudo").replaceWith(htmlInputPseudo())
+  $("#inputNom").replaceWith(htmlInputNom())
+  $("#inputPrenom").replaceWith(htmlInputPrenom())
+  $("#inputEmail").replaceWith(htmlInputEmail())
+  $("#inputTelephone").replaceWith(htmlInputTelephone())
+  $("#inputRue").replaceWith(htmlInputRue())
+  $("#inputCodePostal").replaceWith(htmlInputCodePostal())
+  $("#inputVille").replaceWith(htmlInputVille())
+  $("#inputMotDePasse").replaceWith(htmlInputMotDePasse())
+  $("#id_credit").replaceWith(htmlCredit())
+}
+
+main()
