@@ -27,20 +27,16 @@ function tryToAuth() {
 	$.ajax({
 		  type: "POST",
 		  url: "http://10.41.102.6:8080/ENI-encheres/rest/authentification",
-		  /*headers: {
-			  "Access-Control-Request-Headers": "x-requested-with",
-			  "Access-Control-Allow-Headers": "*",
-			  "Access-Control-Allow-Origin": "*"
-		    },*/
 		  data: JSON.stringify(prepareRequest()),
-		  //crossDomain: true,
 		  success: function (xhr, status) {
+			  console.log("ajax responce success");
 			  console.log(status);
 			  window.location.replace("./acceuil.html");
           },
 		  contentType: "application/json; charset=utf-8",
           dataType: "application/json",
 		  error: function (xhr, status) {
+			  console.log("ajax responce error");
               console.log(xhr);
           }
 		});

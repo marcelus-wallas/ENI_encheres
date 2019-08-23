@@ -48,7 +48,4 @@ public class AuthentificationDTO {
 	public String toString() {
 		return "AuthentificationDTO [pseudo=" + pseudo + ", email=" + email + ", mot_de_passe=" + mot_de_passe + "]";
 	}
-	
-	
-	
 }
