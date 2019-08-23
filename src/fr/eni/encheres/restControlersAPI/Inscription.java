@@ -1,6 +1,8 @@
 package fr.eni.encheres.restControlersAPI;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -43,40 +45,57 @@ public class Inscription {
 											inscriptionDTO.getMot_de_passe(),
 											200,
 											false);
-//		if(temp.getMot_de_passe() != inscriptionDTO.getConfirmation())
-//		{
-//			//Mot de passe != Confirmation
-//			etat = "Password KO";
-//			System.out.println(etat);
-//			return Response.status(Status.BAD_REQUEST).build();
-//		}
 		
-		 ArrayList<Utilisateur> listeUtilisateurs = connexionBdd.read();
-		 for(Utilisateur user : listeUtilisateurs)
+		String mp= inscriptionDTO.getMot_de_passe();
+		String confirmation = inscriptionDTO.getConfirmation().toString();
+		
+		
+		if(mp.equals(confirmation) == false)
+		{
+			//Mot de passe != Confirmation
+			etat = "Password KO";
+			System.out.println(etat);
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+
+		 Utilisateur verifEmail = connexionBdd.verificationEmail(temp.getEmail());
+		 
+		 if(verifEmail.getNom() != null)
 		 {
-			 if(user.getPseudo() == temp.getPseudo())
-			 {
-				 //Pseudo existant
-				 etat = "Pseudo KO";
-				 System.out.println(etat);
-				 response = Response.status(Status.CONFLICT).build();
-			 }
-			 if(user.getEmail() == temp.getEmail())
-			 {
-				 //Email existant
-				 etat = "Email KO";
-				 System.out.println(etat);
-				 response = Response.status(Status.CONFLICT).build();
-			 }
-			 if(user.getPseudo() != temp.getPseudo() && user.getEmail() != temp.getEmail())
-			 {
-				 //Création de l'utilisateur
-				 etat = "Création OK";
-				 System.out.println(etat);
-				 connexionBdd.create(temp);	
-				 response =  Response.ok().build();
-			 }
+			 //Pseudo existant
+			 etat = "Email KO";
+			 System.out.println(etat);
+			 response = Response.status(Status.CONFLICT).build();
 		 }
+			
+		 Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+$"); 
+		 Matcher matcher = pattern.matcher(temp.getPseudo());
+		 if(matcher.matches() == false)
+		 {
+			//Email existant
+			 etat = "Caractères Pseudo KO";
+			 System.out.println(etat);
+			 response = Response.status(Status.BAD_REQUEST).build();
+		 } 
+		 
+		Utilisateur verifPseudo = connexionBdd.verificationPseudo(temp.getPseudo()); 
+		 if(verifPseudo.getNom() != null)
+		 {
+			 //Email existant
+			 etat = "Pseudo KO";
+			 System.out.println(etat);
+			 response = Response.status(Status.CONFLICT).build();
+		 }
+			 
+		 if(verifEmail.getNom() == null && verifPseudo.getNom() == null && matcher.matches() == true)
+		 {
+			 //Création de l'utilisateur
+			 etat = "Création OK";
+			 System.out.println(etat);
+			 connexionBdd.create(temp);	
+			 response =  Response.ok().build();
+		 }
+		 
 		 
 		 return response;
 		
