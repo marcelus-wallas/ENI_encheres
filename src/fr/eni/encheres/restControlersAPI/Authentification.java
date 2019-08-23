@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -26,9 +27,11 @@ public class Authentification {
 	
 	@POST()
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response authentification(AuthentificationDTO authentificationDTO) {
 		System.out.println(authentificationDTO);
-				boolean connexion = false;
+		
+		boolean connexion = false;
 		String etat;
 		
 		if(authentificationDTO.getEmail() != null)
@@ -36,9 +39,9 @@ public class Authentification {
 			//email
 			Utilisateur user = connexionBdd.authentificationEmail(authentificationDTO.getEmail(), authentificationDTO.getmot_de_passe());	
 
-			System.out.println("######EMAIL######"+authentificationDTO.getEmail());
-			System.out.println("######MP######"+authentificationDTO.getmot_de_passe());
-			System.out.println("######Utilisateur######"+user);
+//			System.out.println("######EMAIL######"+authentificationDTO.getEmail());
+//			System.out.println("######MP######"+authentificationDTO.getmot_de_passe());
+//			System.out.println("######Utilisateur######"+user);
 			
 			if(user.getNom() != null)
 			{
@@ -57,9 +60,9 @@ public class Authentification {
 			//pseudo
 			Utilisateur user = connexionBdd.authentificationPseudo(authentificationDTO.getPseudo(), authentificationDTO.getmot_de_passe());	
 
-			System.out.println("######PSEUDO######"+authentificationDTO.getPseudo());
-			System.out.println("######MP######"+authentificationDTO.getmot_de_passe());
-			System.out.println("######Utilisateur######"+user);
+//			System.out.println("######PSEUDO######"+authentificationDTO.getPseudo());
+//			System.out.println("######MP######"+authentificationDTO.getmot_de_passe());
+//			System.out.println("######Utilisateur######"+user);
 			
 			if(user.getNom() != null)
 			{
