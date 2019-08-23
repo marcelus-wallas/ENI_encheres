@@ -69,11 +69,13 @@ function htmlVille() {
   return html
 }
 
-$("#id_pseudo").replaceWith(htmlPseudo())
-$("#id_nom").replaceWith(htmlNom())
-$("#id_prenom").replaceWith(htmlPrenom())
-$("#id_email").replaceWith(htmlemail())
-$("#id_telephone").replaceWith(htmlTelephone())
-$("#id_rue").replaceWith(htmlRue())
-$("#id_code_postal").replaceWith(htmlCodePostal())
-$("#id_ville").replaceWith(htmlVille())
+function main() {
+  $("#id_pseudo").replaceWith(htmlPseudo())
+  $("#id_nom").replaceWith(htmlNom())
+  $("#id_prenom").replaceWith(htmlPrenom())
+  $("#id_email").replaceWith(htmlemail())
+  $("#id_telephone").replaceWith(htmlTelephone())
+  $("#id_rue").replaceWith(htmlRue())
+  $("#id_code_postal").replaceWith(htmlCodePostal())
+  $("#id_ville").replaceWith(htmlVille())
+}
