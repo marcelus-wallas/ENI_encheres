@@ -22,4 +22,9 @@ public interface Iutilisateur {
 	
 	public Utilisateur verificationPseudo(String pseudo);
 	
+	public void modificationProfil(Utilisateur utilisateur);
+	
+	public Utilisateur verificationEmailModif(String email, int no_utilisateur);
+	
+	public Utilisateur verificationPseudoModif(String pseudo, int no_utilisateur);
 }
