@@ -25,13 +25,13 @@ var jsonResponce2 = {
                     "credit": 50
                   }
 
-function htmlInputPseudo() {
+function htmlInputPseudo(serverResponce) {
   // appel API
-  var html = '<input type="text" class="form-control" placeholder="'+jsonResponce2.pseudo+'">'
+  var html = '<input type="text" class="form-control" placeholder="'+serverResponce.pseudo+'">'
   return html
 }
 
-function htmlInputNom() {
+function htmlInputNom(serverResponce) {
   // appel API
   var html = '<input type="text" class="form-control" placeholder="'+jsonResponce2.nom+'">'
   return html
@@ -86,7 +86,9 @@ function htmlCredit() {
 }
 
 function main() {
-  $("#inputPseudo").replaceWith(htmlInputPseudo())
+  $()
+
+  $("#inputPseudo").replaceWith(htmlInputPseudo(jsonResponce2))
   $("#inputNom").replaceWith(htmlInputNom())
   $("#inputPrenom").replaceWith(htmlInputPrenom())
   $("#inputEmail").replaceWith(htmlInputEmail())
@@ -96,6 +98,8 @@ function main() {
   $("#inputVille").replaceWith(htmlInputVille())
   $("#inputMotDePasse").replaceWith(htmlInputMotDePasse())
   $("#id_credit").replaceWith(htmlCredit())
+
+
 }
 
 main()

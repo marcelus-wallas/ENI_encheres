@@ -89,9 +89,7 @@ function htmlBuildRow(html) {
       html += '</div>'
       html += '</div>'
     }
-
     return html
-
 }
 
 function htmlBuildEnchereArray() {
