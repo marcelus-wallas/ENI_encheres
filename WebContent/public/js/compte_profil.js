@@ -1,5 +1,5 @@
-// fake data
-var json_compte_profil1 = {
+
+var jsonResponce1 = {
                     "pseudo": "Miamiam",
                     "nom": "Wallace",
                     "prenom": "Mia",
@@ -9,7 +9,7 @@ var json_compte_profil1 = {
                     "code_postal": "01000",
                     "ville": "Hollywood"
                   }
-var json_compte_profil2 = {
+var jsonResponce2 = {
                     "pseudo": "Vince",
                     "nom": "Vega",
                     "prenom": "Vincent",
@@ -21,7 +21,7 @@ var json_compte_profil2 = {
                   }
 
 function main() {
-  compteMonProfilSetUpHtml(json_compte_profil1)
+  compteProfilSetUpHtml(jsonResponce1)
 }
 
 main()
