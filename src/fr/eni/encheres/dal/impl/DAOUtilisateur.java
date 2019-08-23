@@ -19,6 +19,10 @@ public class DAOUtilisateur implements Iutilisateur {
 	//Compte Connexion
 	private static final String CONNEXION_EMAIL = "SELECT * FROM UTILISATEURS WHERE email = ? AND mot_de_passe =?;";
 	private static final String CONNEXION_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe =?;";
+	
+	//Compte Inscription
+	private static final String VERIFICATION_EMAIL = "SELECT * FROM UTILISATEURS WHERE email = ? ;";
+	private static final String VERIFICATION_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo = ? ;";
 
 	public void create(Utilisateur utilisateur) {
 
@@ -145,6 +149,50 @@ public class DAOUtilisateur implements Iutilisateur {
 			PreparedStatement pstmt = cnx.prepareStatement(CONNEXION_PSEUDO);
 			pstmt.setString(1, pseudo );
 			pstmt.setString(2, motDePasse);
+			
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+						rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+						rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+						rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	public Utilisateur verificationEmail(String email) {
+
+		Utilisateur user = new Utilisateur();
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			
+			PreparedStatement pstmt = cnx.prepareStatement(VERIFICATION_EMAIL);
+			pstmt.setString(1, email);
+			
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+						rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+						rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+						rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	public Utilisateur verificationPseudo(String pseudo) {
+
+		Utilisateur user = new Utilisateur();
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			
+			PreparedStatement pstmt = cnx.prepareStatement(VERIFICATION_PSEUDO);
+			pstmt.setString(1, pseudo);
 			
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

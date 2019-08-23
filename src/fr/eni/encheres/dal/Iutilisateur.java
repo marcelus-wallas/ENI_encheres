@@ -18,4 +18,8 @@ public interface Iutilisateur {
 
 	public Utilisateur authentificationPseudo(String login, String motDePasse);
 	
+	public Utilisateur verificationEmail(String email);
+	
+	public Utilisateur verificationPseudo(String pseudo);
+	
 }
