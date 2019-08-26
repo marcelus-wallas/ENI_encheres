@@ -1,9 +1,10 @@
 package fr.eni.encheres.restControlersAPI;
 
+
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -24,13 +25,9 @@ public class Authentification {
 	
 	@POST()
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response authentification(AuthentificationDTO authentificationDTO) {
 		System.out.println(authentificationDTO);
-//		if(authentificationDTO.getPassword() != null) {
-//			return Response.ok().build();
-//		} else {
-//			return Response.status(Status.BAD_REQUEST).build();
-//		}
 		
 		boolean connexion = false;
 		String etat;
@@ -38,9 +35,13 @@ public class Authentification {
 		if(authentificationDTO.getEmail() != null)
 		{
 			//email
-			Utilisateur user = connexionBdd.authentificationEmail(authentificationDTO.getEmail(), authentificationDTO.getPassword());	
+			Utilisateur user = connexionBdd.authentificationEmail(authentificationDTO.getEmail(), authentificationDTO.getmot_de_passe());	
 
-			if(user != null)
+//			System.out.println("######EMAIL######"+authentificationDTO.getEmail());
+//			System.out.println("######MP######"+authentificationDTO.getmot_de_passe());
+//			System.out.println("######Utilisateur######"+user);
+			
+			if(user.getNom() != null)
 			{
 				etat = "Email OK";
 				System.out.println(etat);
@@ -55,9 +56,14 @@ public class Authentification {
 
 		}else {
 			//pseudo
-			Utilisateur user = connexionBdd.authentificationPseudo(authentificationDTO.getPseudo(), authentificationDTO.getPassword());	
 
-			if(user != null)
+			Utilisateur user = connexionBdd.authentificationPseudo(authentificationDTO.getPseudo(), authentificationDTO.getmot_de_passe());	
+
+//			System.out.println("######PSEUDO######"+authentificationDTO.getPseudo());
+//			System.out.println("######MP######"+authentificationDTO.getmot_de_passe());
+//			System.out.println("######Utilisateur######"+user);
+			
+			if(user.getNom() != null)
 			{
 				etat = "Pseudo OK";
 				System.out.println(etat);
