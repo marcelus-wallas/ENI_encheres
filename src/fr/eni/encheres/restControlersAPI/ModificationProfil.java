@@ -36,7 +36,7 @@ public class ModificationProfil {
 		
 		if(modificationProfilDTO.getNouveau_mot_de_passe() != null)
 		{
-			if(modificationProfilDTO.getNouveau_mot_de_passe().equals(modificationProfilDTO.getConfirmation()))
+			if(modificationProfilDTO.getNouveau_mot_de_passe().equals(modificationProfilDTO.getConfirmation()) == true)
 			{
 				 modif = new Utilisateur (modificationProfilDTO.getNo_utilisateur(),
 						 							modificationProfilDTO.getPseudo(),
@@ -54,7 +54,8 @@ public class ModificationProfil {
 				//Nouveau_mot_de_passe != confirmation
 				etat = "Password KO";
 				System.out.println(etat);
-				response =  Response.status(Status.BAD_REQUEST).build();			
+				return  Response.status(Status.BAD_REQUEST).build();
+							
 			}
 			
 		}else {

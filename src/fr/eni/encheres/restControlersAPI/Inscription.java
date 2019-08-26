@@ -1,6 +1,5 @@
 package fr.eni.encheres.restControlersAPI;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,7 +54,7 @@ public class Inscription {
 			//Mot de passe != Confirmation
 			etat = "Password KO";
 			System.out.println(etat);
-			return Response.status(Status.BAD_REQUEST).build();
+			response =  Response.status(Status.BAD_REQUEST).build();
 		}
 
 		 Utilisateur verifEmail = connexionBdd.verificationEmail(temp.getEmail());
