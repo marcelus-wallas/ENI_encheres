@@ -11,9 +11,9 @@ import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.dal.IarticleVendu;
 
 public class DAOArticleVendu implements IarticleVendu {
-	private static final String CREATE = "INSERT INTO ARTICLES_VENDUS(nom_article, descriptioin, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?);";
+	private static final String CREATE = "INSERT INTO ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?);";
 	private static final String READ = "SELECT * FROM ARTICLES_VENDUS;";
-	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, descriptioin = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
+	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
 	private static final String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?;";
 
 	public void create(ArticleVendu article_vendu) {
@@ -51,7 +51,7 @@ public class DAOArticleVendu implements IarticleVendu {
 
 			while (rs.next()) {
 				ArticleVendu temp = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
-						rs.getString("descriptioin"), rs.getDate("date_debut_encheres").toLocalDate(), rs.getDate("date_fin_encheres").toLocalDate(), rs.getInt("prix_initial"),
+						rs.getString("description"), rs.getDate("date_debut_encheres").toLocalDate(), rs.getDate("date_fin_encheres").toLocalDate(), rs.getInt("prix_initial"),
 						rs.getInt("prix_vente"), rs.getInt("no_utilisateur"), rs.getInt("no_categorie"));
 				res.add(temp);
 			}

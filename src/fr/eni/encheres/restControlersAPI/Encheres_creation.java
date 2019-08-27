@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import fr.eni.encheres.bll.Encheres_creationBLL;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dto.Encheres_creationDTO;
 
@@ -27,7 +28,8 @@ public class Encheres_creation {
 		ArticleVendu article = new ArticleVendu();
 		Enchere enchere = new Enchere();
 		Utilisateur utilisateur = new Utilisateur();
-
+		Retrait retrait = new Retrait();
+		
 		utilisateur.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
 
 		enchere.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
@@ -43,6 +45,9 @@ public class Encheres_creation {
 		article.setDate_debut_encheres(encheres_creationDTO.getDate_debut_encheres());
 		article.setDate_fin_encheres(encheres_creationDTO.getDate_fin_encheres());
 		// lieu de retrait
+		retrait.setRue(encheres_creationDTO.getRue());
+		retrait.setCode_postal(encheres_creationDTO.getCode_postal());
+		retrait.setVille(encheres_creationDTO.getVille());
 
 	}
 }
