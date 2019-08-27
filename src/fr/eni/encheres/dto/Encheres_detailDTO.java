@@ -25,6 +25,8 @@ public class Encheres_detailDTO {
 	//Prix initial
 	private int montant_enchere;
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+	private LocalDate date_debut_encheres = LocalDate.now();
+	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	private LocalDate date_fin_encheres = LocalDate.now();
 
 	// retrait ----
