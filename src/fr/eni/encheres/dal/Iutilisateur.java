@@ -27,4 +27,6 @@ public interface Iutilisateur {
 	public Utilisateur verificationEmailModif(String email, int no_utilisateur);
 	
 	public Utilisateur verificationPseudoModif(String pseudo, int no_utilisateur);
+	
+	public Utilisateur readUser(int no_utilisateur);
 }

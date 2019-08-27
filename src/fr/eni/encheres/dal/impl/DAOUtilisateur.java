@@ -11,6 +11,7 @@ import fr.eni.encheres.bo.Utilisateur;
 
 public class DAOUtilisateur implements Iutilisateur {
 
+	//CRUD
 	private static final String CREATE = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String READ = "SELECT * FROM UTILISATEURS;";
 	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?;";
@@ -29,6 +30,8 @@ public class DAOUtilisateur implements Iutilisateur {
 	private static final String VERIFICATION_EMAIL_MODIF = "SELECT * FROM UTILISATEURS WHERE email = ? AND no_utilisateur != ?;";
 	private static final String VERIFICATION_PSEUDO_MODIF = "SELECT * FROM UTILISATEURS WHERE pseudo = ? AND no_utilisateur != ?;";
 	
+	//Compte Affichage
+	private static final String READUSER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur =?;";
 	
 	public void create(Utilisateur utilisateur) {
 
@@ -272,6 +275,28 @@ public class DAOUtilisateur implements Iutilisateur {
 			PreparedStatement pstmt = cnx.prepareStatement(VERIFICATION_PSEUDO_MODIF);
 			pstmt.setString(1, pseudo);
 			pstmt.setInt(2, no_utilisateur);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+						rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"),
+						rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),
+						rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	public Utilisateur readUser(int no_utilisateur) {
+
+		Utilisateur user = new Utilisateur();
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			
+			PreparedStatement pstmt = cnx.prepareStatement(READUSER);
+			pstmt.setInt(1, no_utilisateur);
+			
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
