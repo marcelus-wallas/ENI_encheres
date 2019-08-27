@@ -17,8 +17,6 @@ public class Inscription {
 	public Inscription(){
 	}
 	
-	String etat;
-	
 	@POST()
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

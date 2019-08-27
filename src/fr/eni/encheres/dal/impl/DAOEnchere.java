@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.Ienchere;
 
 public class DAOEnchere implements Ienchere {
@@ -15,6 +16,9 @@ public class DAOEnchere implements Ienchere {
 	private static final String READ = "SELECT * FROM ENCHERES;";
 	private static final String UPDATE = "UPDATE ENCHERES SET date_enchere = ?, montant_enchere = ? WHERE no_utilisateur = ? AND no_article = ?;";
 	private static final String DELETE = "DELETE FROM ENCHERES WHERE no_utilisateur = ? AND no_article = ?;";
+	
+	//SuppressionProfil
+	private static final String DELETEENCHEREBYUSERID = "DELETE e FROM ENCHERES e JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur WHERE u.no_utilisateur= ?";
 
 	public void create(Enchere enchere) {
 
@@ -93,4 +97,17 @@ public class DAOEnchere implements Ienchere {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteAllByUserId(Utilisateur user)
+	{
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(DELETEENCHEREBYUSERID, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, user.getNo_utilisateur());
+			pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

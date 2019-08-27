@@ -15,7 +15,6 @@ public class InscriptionBll {
 		this.utilisateurDAL = Factory.getUtilisateur();
 	}
 	
-	
 	public Utilisateur tryToInscription(Utilisateur user, String confirmation)
 	{
 	
