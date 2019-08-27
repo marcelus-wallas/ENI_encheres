@@ -16,6 +16,8 @@ public class DAORetrait implements Iretrait {
 	private static final String UPDATE = "UPDATE RETRAITS SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?;";
 	private static final String DELETE = "DELETE FROM RETRAITS WHERE no_article =?;";
 
+	private static final String DELETERETRAITBYUSERID = "DELETE r FROM RETRAITS JOIN ARTICLES_VENDUS a ON r.no_article = a.no_article JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur WHERE u.no_utilisateur= ?";
+
 	public void create(Retrait retrait) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
