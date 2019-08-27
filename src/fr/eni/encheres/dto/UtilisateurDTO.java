@@ -1,6 +1,9 @@
-package fr.eni.encheres.bo;
+package fr.eni.encheres.dto;
 
-public class Utilisateur {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class UtilisateurDTO {
 
 	private int no_utilisateur;
 	private String pseudo;
@@ -14,8 +17,11 @@ public class Utilisateur {
 	private String mot_de_passe;
 	private int credit;
 	private boolean administrateur;
+	private String mot_de_passe_actuel;
+	private String nouveau_mot_de_passe;
+	private String confirmation;
 
-	public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+	public UtilisateurDTO(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
 		super();
 		this.no_utilisateur = no_utilisateur;
@@ -32,7 +38,7 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+	public UtilisateurDTO(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
 		super();
 		this.pseudo = pseudo;
@@ -48,10 +54,9 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 	
-	public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String code_postal, String ville, String mot_de_passe) {
+	public UtilisateurDTO(String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe, String confirmation) {
 		super();
-		this.no_utilisateur = no_utilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -61,16 +66,27 @@ public class Utilisateur {
 		this.code_postal = code_postal;
 		this.ville = ville;
 		this.mot_de_passe = mot_de_passe;
+		this.confirmation = confirmation;
 	}
 	
-	public Utilisateur(String pseudo, String email, String mot_de_passe) {
+	public UtilisateurDTO(String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe_actuel, String nouveau_mot_de_passe, String confirmation) {
 		super();
 		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
 		this.email = email;
-		this.mot_de_passe = mot_de_passe;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mot_de_passe_actuel = mot_de_passe_actuel;
+		this.nouveau_mot_de_passe = nouveau_mot_de_passe;
+		this.confirmation = confirmation;
 	}
 	
-	public Utilisateur() {
+	
+	public UtilisateurDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -169,6 +185,30 @@ public class Utilisateur {
 
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
+	}
+
+	public String getConfirmation() {
+		return confirmation;
+	}
+
+	public void setConfirmation(String confirmation) {
+		this.confirmation = confirmation;
+	}
+	
+	public String getMot_de_passe_actuel() {
+		return mot_de_passe_actuel;
+	}
+
+	public void setMot_de_passe_actuel(String mot_de_passe_actuel) {
+		this.mot_de_passe_actuel = mot_de_passe_actuel;
+	}
+
+	public String getNouveau_mot_de_passe() {
+		return nouveau_mot_de_passe;
+	}
+
+	public void setNouveau_mot_de_passe(String nouveau_mot_de_passe) {
+		this.nouveau_mot_de_passe = nouveau_mot_de_passe;
 	}
 
 	@Override

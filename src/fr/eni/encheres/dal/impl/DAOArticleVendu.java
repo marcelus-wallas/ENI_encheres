@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.IarticleVendu;
 
 public class DAOArticleVendu implements IarticleVendu {
@@ -15,6 +16,9 @@ public class DAOArticleVendu implements IarticleVendu {
 	private static final String READ = "SELECT * FROM ARTICLES_VENDUS;";
 	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, descriptioin = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
 	private static final String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?;";
+	
+	//SuppressionProfil
+	private static final String DELETEARTICLESBYUSERID = "DELETE FROM ARTICLES_VENDUS WHERE no_utilisateur = ?";
 
 	public void create(ArticleVendu article_vendu) {
 
@@ -103,4 +107,17 @@ public class DAOArticleVendu implements IarticleVendu {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteAllByUserId(Utilisateur user)
+	{
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(DELETEARTICLESBYUSERID, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, user.getNo_utilisateur());
+			pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
