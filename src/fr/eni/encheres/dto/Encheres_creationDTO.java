@@ -33,7 +33,6 @@ public class Encheres_creationDTO {
 
 	public Encheres_creationDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Encheres_creationDTO(int no_utilisateur, String nom_article, String description, int no_categorie,
