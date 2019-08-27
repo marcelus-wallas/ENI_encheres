@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Mon profil</title>
+    <title>Profil utilisateur</title>
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
@@ -20,7 +20,7 @@
 
     <!-- top bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="./accueil(4-5).html">ENI-Encheres</a>
+      <a class="navbar-brand" href="./accueil.html">ENI_encheres</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,16 +28,16 @@
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./accueil(4-5).html">Enchères</a>
+            <a class="nav-link" href="./accueil.html">Enchères</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./encheres_nouveau(9).html">Vender un article</a>
+            <a class="nav-link" href="./encheres_nouveau.html">Vender un article</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./compte_mon_profil(7).html">Mon profil</a>
+            <a class="nav-link" href="./compte_mon_profil.html">Mon profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./index(1).html">Déconnexion</a>
+            <a class="nav-link" href="./index.html">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -47,7 +47,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-auto">
-          <h1>Mon profil</h1>
+          <h1>Profil utilisateur</h1>
         </div>
       </div>
     </div>
@@ -61,57 +61,53 @@
               <h6>Pseudo : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilPseudo"></div>
+              <div id="compteProfilPseudo"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Nom : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilNom"></div>
+              <div id="compteProfilNom"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Prénom : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilPrenom"></div>
+              <div id="compteProfilPrenom"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Email : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilEmail"></div>
+              <div id="compteProfilEmail"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Téléphone : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilTelephone"></div>
+              <div id="compteProfilTelephone"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Rue : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilRue"></div>
+              <div id="compteProfilRue"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Code postal : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilCodePostal"></div>
+              <div id="compteProfilCodePostal"></div>
             </div>
             <div class="col-sm-4 d-flex align-items-center flex-column" style="margin-top:1rem;">
               <h6>Ville : </h6>
             </div>
             <div class="col-sm-8 d-flex align-items-center flex-column" style="margin-top:1rem;">
-              <div id="compteMonProfilVille"></div>
+              <div id="compteProfilVille"></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="row justify-content-md-center">
-      <a href="./compte_edition(8).html" class="btn btn-outline-success my-2 my-sm-0" role="button">Modifier</a>
     </div>
 
     <!-- export -->
@@ -120,6 +116,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="../js/tools/logger.js"></script>
     <script src="../js/tools/htmlBuilder.js"></script>
-    <script src="../js/compte_mon_profil.js"></script>
+    <script src="../js/compte_profil.js"></script>
   </body>
 </html>

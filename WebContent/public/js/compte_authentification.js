@@ -26,7 +26,7 @@ function serverResponce(data) {
 function tryToAuth() {
 	$.ajax({
 		  type: "POST",
-		  url: "http://10.41.102.6:8080/ENI-encheres/rest/authentification",
+		  url: "http://10.41.102.6:8080/ENI_encheres/rest/authentification",
 		  data: JSON.stringify(prepareRequest()),
 		  success: function (xhr, status) {
 			  console.log("ajax responce success");
