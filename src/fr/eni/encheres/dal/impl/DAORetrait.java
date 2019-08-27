@@ -10,10 +10,10 @@ import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.dal.Iretrait;
 
 public class DAORetrait implements Iretrait {
-	private static final String CREATE = "INSERT INTO RETRAIT(no_article, rue, code_postal, ville) VALUES(?,?,?,?);";
-	private static final String READ = "SELECT * FROM RETRAIT;";
-	private static final String UPDATE = "UPDATE RETRAIT SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?;";
-	private static final String DELETE = "DELETE FROM RETRAIT WHERE no_article =?;";
+	private static final String CREATE = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES(?,?,?,?);";
+	private static final String READ = "SELECT * FROM RETRAITS;";
+	private static final String UPDATE = "UPDATE RETRAITS SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?;";
+	private static final String DELETE = "DELETE FROM RETRAITS WHERE no_article =?;";
 
 	public void create(Retrait retrait) {
 
@@ -25,10 +25,12 @@ public class DAORetrait implements Iretrait {
 			pstmt.setString(4, retrait.getVille());
 			pstmt.executeUpdate();
 
-			/*
-			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
-			 * retrait.setIdentifiant(rs.getInt(1)); }
-			 */
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				retrait.setNo_article(rs.getInt(1));
+				System.out.println(rs.getInt(1));
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
