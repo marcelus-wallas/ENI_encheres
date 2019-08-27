@@ -12,15 +12,15 @@ import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.IarticleVendu;
 
 public class DAOArticleVendu implements IarticleVendu {
-	private static final String CREATE = "INSERT INTO ARTICLES_VENDUS(nom_article, descriptioin, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?);";
+	private static final String CREATE = "INSERT INTO ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?);";
 	private static final String READ = "SELECT * FROM ARTICLES_VENDUS;";
-	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, descriptioin = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
+	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
 	private static final String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?;";
 	
 	//SuppressionProfil
 	private static final String DELETEARTICLESBYUSERID = "DELETE FROM ARTICLES_VENDUS WHERE no_utilisateur = ?";
 
-	public void create(ArticleVendu article_vendu) {
+	public ArticleVendu create(ArticleVendu article_vendu) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -34,14 +34,14 @@ public class DAOArticleVendu implements IarticleVendu {
 			pstmt.setInt(8, article_vendu.getNo_categorie());
 			pstmt.executeUpdate();
 
-			/*
-			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
-			 * article_vendu.setIdentifiant(rs.getInt(1)); }
-			 */
-
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				article_vendu.setNo_article(rs.getInt(1));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return article_vendu;
 	}
 
 	public ArrayList<ArticleVendu> read() {
@@ -55,7 +55,8 @@ public class DAOArticleVendu implements IarticleVendu {
 
 			while (rs.next()) {
 				ArticleVendu temp = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
-						rs.getString("descriptioin"), rs.getDate("date_debut_encheres").toLocalDate(), rs.getDate("date_fin_encheres").toLocalDate(), rs.getInt("prix_initial"),
+						rs.getString("description"), rs.getDate("date_debut_encheres").toLocalDate(),
+						rs.getDate("date_fin_encheres").toLocalDate(), rs.getInt("prix_initial"),
 						rs.getInt("prix_vente"), rs.getInt("no_utilisateur"), rs.getInt("no_categorie"));
 				res.add(temp);
 			}
@@ -79,7 +80,6 @@ public class DAOArticleVendu implements IarticleVendu {
 			pstmt.setInt(8, article_vendu.getNo_categorie());
 			pstmt.setInt(9, article_vendu.getNo_article());
 			pstmt.executeUpdate();
-
 
 			/*
 			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
