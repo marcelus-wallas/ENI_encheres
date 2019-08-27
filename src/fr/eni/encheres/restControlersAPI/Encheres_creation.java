@@ -44,12 +44,12 @@ public class Encheres_creation {
 		ArticleVendu article = traitement.newArticle(article_vendu);
 		int idArticle = article.getNo_article();
 		System.out.println(idArticle);
-		// lieu de retrait		
+		// lieu de retrait
 		retrait.setNo_article(idArticle);
 		retrait.setRue(encheres_creationDTO.getRue());
 		retrait.setCode_postal(encheres_creationDTO.getCode_postal());
 		retrait.setVille(encheres_creationDTO.getVille());		
-		traitement.newRetrait(retrait);
+		traitement.newRetrait(retrait, utilisateur);
 
 		
 		System.out.println(article_vendu);
