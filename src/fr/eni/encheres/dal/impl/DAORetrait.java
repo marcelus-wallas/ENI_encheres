@@ -26,11 +26,10 @@ public class DAORetrait implements Iretrait {
 			pstmt.executeUpdate();
 
 			ResultSet rs = pstmt.getGeneratedKeys();
+			System.out.println(rs.getInt(1));
 			if (rs.next()) {
 				retrait.setNo_article(rs.getInt(1));
-				System.out.println(rs.getInt(1));
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();

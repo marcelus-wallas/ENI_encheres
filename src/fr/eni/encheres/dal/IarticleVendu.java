@@ -6,7 +6,7 @@ import fr.eni.encheres.bo.ArticleVendu;
 
 public interface IarticleVendu {
 
-	public int create(ArticleVendu article_vendu);
+	public ArticleVendu create(ArticleVendu article_vendu);
 
 	public ArrayList<ArticleVendu> read();
 

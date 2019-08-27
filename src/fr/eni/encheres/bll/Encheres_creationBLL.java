@@ -16,10 +16,10 @@ public class Encheres_creationBLL {
 		this.retraitDAL = Factory.getRetrait();
 	}
 
-	public void newArticle(ArticleVendu article_vendu) {
-		articleVenduDAL.create(article_vendu);
+	public ArticleVendu newArticle(ArticleVendu i) {
+		return articleVenduDAL.create(i);
 	}
-	
+
 	public void newRetrait(Retrait retrait) {
 		this.retraitDAL.create(retrait);
 	}
