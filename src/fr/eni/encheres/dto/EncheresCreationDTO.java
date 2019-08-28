@@ -11,7 +11,7 @@ import fr.eni.encheres.tools.LocalDateAdapter;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Encheres_detailDTO {
+public class EncheresCreationDTO {
 
 	// numero utilisateur -> vendeur
 	private int no_utilisateur;
@@ -20,35 +20,34 @@ public class Encheres_detailDTO {
 	private String description;
 	private int no_categorie;
 	// photo encheres
-	//mise a prix
-	private int prix_initial;
-	//Prix initial
-	private int montant_enchere;
+	private int prix_initial;	
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	private LocalDate date_debut_encheres = LocalDate.now();
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	private LocalDate date_fin_encheres = LocalDate.now();
 
 	// retrait ----
+	private int no_article;
 	private String rue;
 	private String code_postal;
 	private String ville;
 
-	public Encheres_detailDTO() {
+	public EncheresCreationDTO() {
 		super();
 	}
 
-	public Encheres_detailDTO(int no_utilisateur, String nom_article, String description, int no_categorie,
-			int prix_initial, LocalDate date_debut_encheres, LocalDate date_fin_encheres, String rue, String code_postal,
-			String ville) {
+	public EncheresCreationDTO(int no_utilisateur, String nom_article, String description, int no_categorie,
+			int prix_initial, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int no_article, String rue,
+			String code_postal, String ville) {
 		super();
 		this.no_utilisateur = no_utilisateur;
 		this.nom_article = nom_article;
 		this.description = description;
 		this.no_categorie = no_categorie;
-		this.prix_initial = prix_initial;		
-		this.date_debut_encheres = date_debut_encheres;		
+		this.prix_initial = prix_initial;
+		this.date_debut_encheres = date_debut_encheres;
 		this.date_fin_encheres = date_fin_encheres;
+		this.no_article = no_article;
 		this.rue = rue;
 		this.code_postal = code_postal;
 		this.ville = ville;
@@ -110,6 +109,14 @@ public class Encheres_detailDTO {
 		this.date_fin_encheres = date_fin_encheres;
 	}
 
+	public int getNo_article() {
+		return no_article;
+	}
+
+	public void setNo_article(int no_article) {
+		this.no_article = no_article;
+	}
+
 	public String getRue() {
 		return rue;
 	}
@@ -134,4 +141,4 @@ public class Encheres_detailDTO {
 		this.ville = ville;
 	}
 
-}
+}	

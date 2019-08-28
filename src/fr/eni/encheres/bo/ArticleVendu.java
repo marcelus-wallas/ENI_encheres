@@ -14,6 +14,11 @@ public class ArticleVendu {
 	private int no_utilisateur;
 	private int no_categorie;
 
+	public ArticleVendu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public ArticleVendu(int no_article, String nom_article, String description, LocalDate date_debut_encheres,
 			LocalDate date_fin_encheres, int prix_initial, int prix_vente, int no_utilisateur, int no_categorie) {
 		super();
@@ -27,7 +32,7 @@ public class ArticleVendu {
 		this.no_utilisateur = no_utilisateur;
 		this.no_categorie = no_categorie;
 	}
-	
+
 	public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres,
 			LocalDate date_fin_encheres, int prix_initial, int prix_vente, int no_utilisateur, int no_categorie) {
 		super();
@@ -41,9 +46,17 @@ public class ArticleVendu {
 		this.no_categorie = no_categorie;
 	}
 
-	public ArticleVendu() {
+	public ArticleVendu(int no_article, String nom_article, String description, LocalDate date_fin_encheres,
+			int no_categorie, int prix_vente, int prix_initial, int no_utilisateur) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.no_article = no_article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_fin_encheres = date_fin_encheres;
+		this.prix_initial = prix_initial;
+		this.prix_vente = prix_vente;
+		this.no_utilisateur = no_utilisateur;
+		this.no_categorie = no_categorie;
 	}
 
 	public int getNo_article() {

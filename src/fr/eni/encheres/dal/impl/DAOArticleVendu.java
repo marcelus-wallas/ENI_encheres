@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.IarticleVendu;
@@ -16,9 +15,12 @@ public class DAOArticleVendu implements IarticleVendu {
 	private static final String READ = "SELECT * FROM ARTICLES_VENDUS;";
 	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
 	private static final String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?;";
-	
-	//SuppressionProfil
-	private static final String DELETEARTICLESBYUSERID = "DELETE FROM ARTICLES_VENDUS WHERE no_utilisateur = ?";
+
+	// EncheresAffichage
+	private static final String READARTICLE = "SELECT * FROM ARTICLES_VENDUS WHERE no_article =?;";
+
+	// SuppressionProfil
+	private static final String DELETEARTICLESBYUSERID = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
 
 	public ArticleVendu create(ArticleVendu article_vendu) {
 
@@ -107,17 +109,37 @@ public class DAOArticleVendu implements IarticleVendu {
 			e.printStackTrace();
 		}
 	}
-	
-	public void deleteAllByUserId(Utilisateur user)
-	{
+
+	public ArticleVendu readArticle(int no_article) {
+
+		ArticleVendu article = new ArticleVendu();
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(DELETEARTICLESBYUSERID, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			PreparedStatement pstmt = cnx.prepareStatement(READARTICLE);
+			pstmt.setInt(1, no_article);
+
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+						rs.getString("description"), rs.getDate("date_debut_encheres").toLocalDate(),
+						rs.getDate("date_fin_encheres").toLocalDate(), rs.getInt("prix_initial"),
+						rs.getInt("prix_vente"), rs.getInt("no_utilisateur"), rs.getInt("no_categorie"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return article;
+	}
+
+	public void deleteAllByUserId(Utilisateur user) {
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(DELETEARTICLESBYUSERID,
+					PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setInt(1, user.getNo_utilisateur());
 			pstmt.executeUpdate();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 }

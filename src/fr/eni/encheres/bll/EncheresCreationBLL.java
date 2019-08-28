@@ -8,13 +8,13 @@ import fr.eni.encheres.dal.IarticleVendu;
 import fr.eni.encheres.dal.Iretrait;
 import fr.eni.encheres.dal.Iutilisateur;
 
-public class Encheres_creationBLL {
+public class EncheresCreationBLL {
 
 	private IarticleVendu articleVenduDAL;
 	private Iretrait retraitDAL;
 	private Iutilisateur utilisateurDAL;
 
-	public Encheres_creationBLL() {
+	public EncheresCreationBLL() {
 		this.articleVenduDAL = Factory.getArticleVendu();
 		this.retraitDAL = Factory.getRetrait();
 		this.utilisateurDAL = Factory.getUtilisateur();
