@@ -30,7 +30,6 @@ function tryToAuth() {
 			  url: "http://localhost:8080/ENI_encheres/rest/authentification",
 			  data: prepareRequest(),
 			  success: function (xhr, status) {
-				  console.log("xhr: "+JSON.stringify(xhr))
 				  if (xhr.no_utilisateur == 0) {
 					  $('#modal').modal('show')
 				  } else {

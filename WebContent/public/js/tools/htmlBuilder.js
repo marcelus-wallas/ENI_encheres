@@ -531,7 +531,6 @@ function makeSelectCategorieNouvreau(arrayCategories) {
 	var html = '<select class="form-control" id="selectCategoriesNouveau">'
 	html += '<option id="0"></option>'
     for (var i = 0; i<arrayCategories.length; i++) {
-    	console.log("i: "+i)
     	html += '<option id="'+arrayCategories[i].no_categorie+'">'+arrayCategories[i].libelle+'</option>'
     }
     html += '</select>'

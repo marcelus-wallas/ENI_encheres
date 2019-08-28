@@ -11,41 +11,45 @@ function formatDate(date) {
 }
 
 function validation() {
+	var isValid = true
 	var jsonRequest = {}
 
-	//jsonRequest.no_utilisateur TODO cookies
+	jsonRequest.no_utilisateur = readCookie("IdUser")
 
 	if ($('#nom_article').val() != "") {
 		jsonRequest.nom_article = $('#nom_article').val()
 	} else {
 		$('#messageError').replaceWith('<h6 id="messageError">Nom de l\'article invalide</h6>')
 		$('#modal').modal('show')
+		return null
 	}
 	if ($('#description').val() != "") {
 		jsonRequest.description = $('#description').val()
 	} else {
 		$('#messageError').replaceWith('<h6 id="messageError">Description invalide</h6>')
 		$('#modal').modal('show')
+		return null
 	}
 	if ($('#no_categorie').val() != "") {
 		jsonRequest.no_categorie = $('#no_categorie').val()
 	} else {
 		$('#messageError').replaceWith('<h6 id="messageError">Categorie invalide</h6>')
 		$('#modal').modal('show')
+		return null
 	}
-	console.log("#prix_initial: "+document.getElementById('test').value)
-	console.log("#prix_initial: "+$('#test').val())
-	
-	if ($('#prix_initial').val() != "") {
-		if ($('#prix_initial').val() >= 0) {
-			jsonRequest.prix_initial = $('#prix_initial').val()	
+	console.log("prix initial: "+typeof $('#prixInitial').val())
+	if ($('#prixInitial').val() != "") {
+		if (parseInt($('#prixInitial').val()) >= 0) {
+			jsonRequest.prix_initial = parseInt($('#prixInitial').val())
 		} else {
 			$('#messageError').replaceWith('<h6 id="messageError">Prix initial negatif ou nul</h6>')
 			$('#modal').modal('show')	
+			return null
 		}
 	} else {
 		$('#messageError').replaceWith('<h6 id="messageError">Prix initial invalide</h6>')
 		$('#modal').modal('show')
+		return null
 	}
 	if ($('#date_debut_encheres').val() != "" && $('#date_fin_encheres').val() != "") {
 		if ($('#date_debut_encheres').val() < $('#date_fin_encheres').val()){
@@ -55,19 +59,23 @@ function validation() {
 					jsonRequest.date_fin_encheres = $('#date_fin_encheres').val()
 				} else {
 					$('#messageError').replaceWith('<h6 id="messageError">Date de fin deja passée</h6>')
-					$('#modal').modal('show')			
+					$('#modal').modal('show')
+					return null			
 				}
 			} else {
 				$('#messageError').replaceWith('<h6 id="messageError">Date de debut deja passée</h6>')
-				$('#modal').modal('show')			
+				$('#modal').modal('show')	
+				return null		
 			}
 		} else {
 			$('#messageError').replaceWith('<h6 id="messageError">Date de debut apres date de fin</h6>')
-			$('#modal').modal('show')			
+			$('#modal').modal('show')	
+			return null		
 		}
 	} else {
 		$('#messageError').replaceWith('<h6 id="messageError">Champs dates non remplis</h6>')
 		$('#modal').modal('show')
+		return null
 	}
 	if ($('#rue').val() == "" && $('#code_postal').val() == "" && $('#ville').val() == "") {
 		
@@ -79,12 +87,36 @@ function validation() {
 		} else {
 			$('#messageError').replaceWith('<h6 id="messageError">Veuillez remplir tous les champs de retrait ou aucun</h6>')
 			$('#modal').modal('show')
+			return null
 		}
+	}
+	console.log("JSON: "+JSON.stringify(jsonRequest))
+	return jsonRequest
+}
+
+function sendNewEnchere() {
+	var jsonToSend = validation()
+	if (jsonToSend != null){
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8080/ENI_encheres/rest/encheres_creation",
+			data: jsonToSend,
+			success: function (xhr, status) {
+				console.log("xhr: "+JSON.stringify(xhr))
+				$('#messageError').replaceWith('<h6 id="messageError">Votre enchere a été enregistrée</h6>')
+				$('#modal').modal('show')
+				setTimeout(function(){ window.location.replace("accueil.html") }, 2000)
+			},
+			contentType: "application/json; charset=utf-8",
+			error: function (xhr, status) {
+				console.error("POST /ENI_encheres/rest/encheres_creation error")
+				console.error("xhr: "+JSON.stringify(xhr))
+			}
+		})
 	}
 }
 
 function main() {
-	debbug("coucou")
 	$.get("/ENI_encheres/rest/categories", function(arrayCategories, status){
 		setupEnchereNouveau(arrayCategories.categoriesDTO)
 	})

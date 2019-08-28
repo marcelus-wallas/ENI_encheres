@@ -23,6 +23,7 @@ public class Encheres_creation {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void encheres_creation(Encheres_creationDTO encheres_creationDTO) {
+		System.out.println("encheres_creationDTO: "+encheres_creationDTO);
 		ArticleVendu article_vendu = new ArticleVendu();
 		Enchere enchere = new Enchere();
 		Utilisateur utilisateur = new Utilisateur();
