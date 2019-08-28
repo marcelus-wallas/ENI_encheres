@@ -34,6 +34,7 @@ function tryToAuth() {
 				  if (xhr.no_utilisateur == 0) {
 					  $('#modal').modal('show')
 				  } else {
+					  createCookie('IdUser',xhr.no_utilisateur,0)
 					  window.location.replace("accueil.html")					  
 				  }
 	          },
@@ -49,3 +50,8 @@ function tryToAuth() {
 	}
 }
 
+function deconnexion()
+{
+	eraseCookie('IdUser')
+	window.location.replace("accueil.html")
+}
