@@ -30,14 +30,14 @@ function validation() {
 		$('#modal').modal('show')
 		return null
 	}
-	if ($('#no_categorie').val() != "") {
-		jsonRequest.no_categorie = $('#no_categorie').val()
+	console.log("$('#selectCategoriesNouveau').val(): "+$('#selectCategoriesNouveau').val())
+	if ($('#selectCategoriesNouveau').val() != "") {
+		jsonRequest.no_categorie = $('#selectCategoriesNouveau').val()
 	} else {
 		$('#messageError').replaceWith('<h6 id="messageError">Categorie invalide</h6>')
 		$('#modal').modal('show')
 		return null
 	}
-	console.log("prix initial: "+typeof $('#prixInitial').val())
 	if ($('#prixInitial').val() != "") {
 		if (parseInt($('#prixInitial').val()) >= 0) {
 			jsonRequest.prix_initial = parseInt($('#prixInitial').val())
