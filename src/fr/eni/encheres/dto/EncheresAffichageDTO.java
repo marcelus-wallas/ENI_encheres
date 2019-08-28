@@ -26,6 +26,8 @@ public class EncheresAffichageDTO {
 	private int prix_initial;
 	private int prix_vente;
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+	private LocalDate date_debut_encheres = LocalDate.now();
+	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	private LocalDate date_fin_encheres = LocalDate.now();
 
 	// retrait ----
@@ -38,8 +40,8 @@ public class EncheresAffichageDTO {
 	}
 
 	public EncheresAffichageDTO(int no_utilisateur, String nom_utilisateur, int no_article, String nom_article,
-			String description, int no_categorie, int prix_initial, int prix_vente, LocalDate date_fin_encheres,
-			String rue, String code_postal, String ville) {
+			String description, int no_categorie, int prix_initial, int prix_vente, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, String rue, String code_postal, String ville) {
 		super();
 		this.no_utilisateur = no_utilisateur;
 		this.nom_utilisateur = nom_utilisateur;
@@ -49,6 +51,7 @@ public class EncheresAffichageDTO {
 		this.no_categorie = no_categorie;
 		this.prix_initial = prix_initial;
 		this.prix_vente = prix_vente;
+		this.date_debut_encheres = date_debut_encheres;
 		this.date_fin_encheres = date_fin_encheres;
 		this.rue = rue;
 		this.code_postal = code_postal;
@@ -65,6 +68,17 @@ public class EncheresAffichageDTO {
 		this.no_categorie = no_categorie;
 		this.prix_initial = prix_initial;
 		this.prix_vente = prix_vente;
+		this.date_fin_encheres = date_fin_encheres;
+	}
+
+	public EncheresAffichageDTO(String nom_article, String description, int no_categorie, int prix_initial,
+			LocalDate date_debut_encheres, LocalDate date_fin_encheres) {
+		super();
+		this.nom_article = nom_article;
+		this.description = description;
+		this.no_categorie = no_categorie;
+		this.prix_initial = prix_initial;
+		this.date_debut_encheres = date_debut_encheres;
 		this.date_fin_encheres = date_fin_encheres;
 	}
 
@@ -132,6 +146,14 @@ public class EncheresAffichageDTO {
 		this.prix_vente = prix_vente;
 	}
 
+	public LocalDate getDate_debut_encheres() {
+		return date_debut_encheres;
+	}
+
+	public void setDate_debut_encheres(LocalDate date_debut_encheres) {
+		this.date_debut_encheres = date_debut_encheres;
+	}
+
 	public LocalDate getDate_fin_encheres() {
 		return date_fin_encheres;
 	}
@@ -163,4 +185,5 @@ public class EncheresAffichageDTO {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+
 }
