@@ -33,8 +33,8 @@ function validation() {
 		$('#messageError').replaceWith('<h6 id="messageError">Categorie invalide</h6>')
 		$('#modal').modal('show')
 	}
-	console.log("#prix_initial: "+document.getElementById('prix_initial').value)
-	console.log("#prix_initial: "+$('#prix_initial').val())
+	console.log("#prix_initial: "+document.getElementById('test').value)
+	console.log("#prix_initial: "+$('#test').val())
 	
 	if ($('#prix_initial').val() != "") {
 		if ($('#prix_initial').val() >= 0) {
@@ -84,6 +84,7 @@ function validation() {
 }
 
 function main() {
+	debbug("coucou")
 	$.get("/ENI_encheres/rest/categories", function(arrayCategories, status){
 		setupEnchereNouveau(arrayCategories.categoriesDTO)
 	})
