@@ -50,7 +50,7 @@ public class InscriptionBll {
 		 Matcher matcher = pattern.matcher(temp.getPseudo());
 		 if(matcher.matches() == false)
 		 {
-			//Email existant
+			//Pseudo caractères incorrects
 			 return null;
 		 } 
 		 

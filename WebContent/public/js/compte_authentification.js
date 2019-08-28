@@ -50,8 +50,3 @@ function tryToAuth() {
 	}
 }
 
-function deconnexion()
-{
-	eraseCookie('IdUser')
-	window.location.replace("accueil.html")
-}
