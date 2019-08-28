@@ -17,6 +17,23 @@
 
 
     -->
+    
+    <!-- Modal -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<div id="messageError"></div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
     <!-- top bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -37,7 +54,7 @@
             <a class="nav-link" href="./compte_mon_profil.html">Mon profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Déconnexion</a>
+            <a class="nav-link" href="/ENI_encheres/index.html">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -66,25 +83,19 @@
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Article : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Article">
+                  <input id="nom_article" type="text" class="form-control" placeholder="Article">
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Description : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Description">
+                  <input id="description" type="text" class="form-control" placeholder="Description">
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Categorie : </label>
                 <div class="col-sm-8">
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>cat 1</option>
-                    <option>cat 2</option>
-                    <option>cat 3</option>
-                    <option>cat 4</option>
-                    <option>cat 5</option>
-                  </select>
+                  <div id="selectCategoriesNouveau"></div>
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
@@ -94,21 +105,21 @@
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Mise à prix : </label>
+                <label id="prix_initial" class="col-sm-4 col-form-label">Mise à prix : </label>
                 <div class="col-sm-8">
-                  <input type="number" class="form-control" placeholder="0">
+                  <input id="prix_initial" min="0" type="number" class="form-control" placeholder="0">
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Debut de l'enchère : </label>
                 <div class="col-sm-8">
-                  <input type="date" class="form-control">
+                  <input id="date_debut_encheres" type="date" class="form-control">
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Fin de l'enchère : </label>
                 <div class="col-sm-8">
-                  <input type="date" class="form-control">
+                  <input id="date_fin_encheres" type="date" class="form-control">
                 </div>
               </div>
             </div>
@@ -129,19 +140,19 @@
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Rue : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Rue">
+                  <input id="rue" type="text" class="form-control" placeholder="Rue">
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Code postal : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Code postal">
+                  <input id="code_postal" type="text" class="form-control" placeholder="Code postal">
                 </div>
               </div>
               <div class="row" style="margin:1rem;">
                 <label class="col-sm-4 col-form-label">Ville : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Ville  ">
+                  <input id="ville" type="text" class="form-control" placeholder="Ville  ">
                 </div>
               </div>
 
@@ -154,7 +165,7 @@
 
     <div class="row">
       <div class="col-6 d-flex align-items-end flex-column">
-        <a href="./accueil.html" class="btn btn-outline-success my-2 my-sm-0" role="button">Créer</a>
+        <a onclick="validation();" class="btn btn-outline-success my-2 my-sm-0" role="button">Créer</a>
       </div>
       <div class="col-6">
         <a href="./accueil.html" class="btn btn-outline-success my-2 my-sm-0" role="button">Annuler</a>
@@ -162,11 +173,11 @@
     </div>
 
     <!-- export -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="../js/tools/logger.js"></script>
-    <script src="../js/tools/htmlBuilder.js"></script>
-    <script src="../js/encheres_nouveau.js"></script>
+    <script src="/ENI_encheres/public/js/tools/logger.js"></script>
+    <script src="/ENI_encheres/public/js/tools/htmlBuilder.js"></script>
+    <script src="/ENI_encheres/public/js/enchere_nouveau.js"></script>
   </body>
 </html>

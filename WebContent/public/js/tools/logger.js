@@ -1,4 +1,4 @@
-canUlogPlease = true
+canUlogPlease = false
 
 function debbug(msg) {
   if (canUlogPlease) {

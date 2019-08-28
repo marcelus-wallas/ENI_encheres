@@ -520,12 +520,26 @@ function makeSelectCategorie(arrayCategories) {
 	var html = '<select class="form-control" id="selectCategories">'
 	html += '<option id="0">toutes</option>'
     for (var i = 0; i<arrayCategories.length; i++) {
+    	html += '<option id="'+arrayCategories[i].no_categorie+'">'+arrayCategories[i].libelle+'</option>'
+    }
+    html += '</select>'
+    return html
+}
+
+function makeSelectCategorieNouvreau(arrayCategories) {
+	debbug("makeSelectCategorieNouveau")
+	var html = '<select class="form-control" id="selectCategoriesNouveau">'
+	html += '<option id="0"></option>'
+    for (var i = 0; i<arrayCategories.length; i++) {
     	console.log("i: "+i)
     	html += '<option id="'+arrayCategories[i].no_categorie+'">'+arrayCategories[i].libelle+'</option>'
     }
     html += '</select>'
-    debbug(html)
     return html
+}
+
+function setupEnchereNouveau(arrayCategories) {
+	  $('#selectCategoriesNouveau').replaceWith(makeSelectCategorieNouvreau(arrayCategories))
 }
 
 function indexSetUpHtml(jsonEnchereArray, arrayCategories) {
