@@ -504,7 +504,6 @@ function buildRow(jsonEnchereArray) {
     html += '</div>'
     html += '</div>'
   }
-  debbug(html)
   return html
 }
 
@@ -516,12 +515,28 @@ function buildEnchereArray(jsonEnchereArray) {
   return html
 }
 
-function indexSetUpHtml(jsonEnchereArray) {
-  debbug("jsonEnchereArray: "+JSON.stringify(jsonEnchereArray))
-  $('#enchereToPrint').replaceWith(buildEnchereArray(jsonEnchereArray))
+function makeSelectCategorie(arrayCategories) {
+	debbug("makeSelectCategorie")
+	var html = '<select class="form-control" id="selectCategories">'
+	html += '<option id="0">toutes</option>'
+    for (var i = 0; i<arrayCategories.length; i++) {
+    	console.log("i: "+i)
+    	html += '<option id="'+arrayCategories[i].no_categorie+'">'+arrayCategories[i].libelle+'</option>'
+    }
+    html += '</select>'
+    debbug(html)
+    return html
 }
 
-function accueilSetUpHtml(jsonEnchereArray) {
+function indexSetUpHtml(jsonEnchereArray, arrayCategories) {
   debbug("jsonEnchereArray: "+JSON.stringify(jsonEnchereArray))
+  debbug("arrayCategories: "+arrayCategories.length)
   $('#enchereToPrint').replaceWith(buildEnchereArray(jsonEnchereArray))
+  $('#selectCategories').replaceWith(makeSelectCategorie(arrayCategories))
+}
+
+function accueilSetUpHtml(jsonEnchereArray, arrayCategories) {
+  debbug("jsonEnchereArray: "+JSON.stringify(jsonEnchereArray, arrayCategories))
+  $('#enchereToPrint').replaceWith(buildEnchereArray(jsonEnchereArray))
+  $('#selectCategories').replaceWith(makeSelectCategorie(arrayCategories))
 }

@@ -45,7 +45,9 @@ var jsonEnchereArrayTest = [
 ]
 
 function main() {
-  accueilSetUpHtml(jsonEnchereArrayTest)
+	$.get("/ENI_encheres/rest/categories", function(arrayCategories, status){
+		accueilSetUpHtml(jsonEnchereArrayTest, arrayCategories.categoriesDTO)
+	})
 }
 
 main()

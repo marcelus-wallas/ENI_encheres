@@ -2,7 +2,6 @@
 
 function prepareRequest() {
 	var jsonRequest = {}
-	
 	if ($('#login').val().includes("@")) {
 		jsonRequest.email = $('#login').val()
 	} else {
@@ -12,7 +11,8 @@ function prepareRequest() {
 	jsonRequest.mot_de_passe = $('#password').val()
 	
 	console.log("jsonRequest: "+JSON.stringify(jsonRequest))
-	return jsonRequest
+	return JSON.stringify(jsonRequest)
+	
 }
 
 function serverResponce(data) {
@@ -24,21 +24,28 @@ function serverResponce(data) {
 }
 
 function tryToAuth() {
-	$.ajax({
-		  type: "POST",
-		  url: "http://10.41.102.6:8080/ENI_encheres/rest/authentification",
-		  data: JSON.stringify(prepareRequest()),
-		  success: function (xhr, status) {
-			  console.log("ajax responce success");
-			  console.log(status);
-			  window.location.replace("./acceuil.html");
-          },
-		  contentType: "application/json; charset=utf-8",
-          dataType: "application/json",
-		  error: function (xhr, status) {
-			  console.log("ajax responce error");
-              console.log(xhr);
-          }
-		});
+	if ($('#login').val() != "" && $('#password').val() != ""){
+		$.ajax({
+			  type: "POST",
+			  url: "http://localhost:8080/ENI_encheres/rest/authentification",
+			  data: prepareRequest(),
+			  success: function (xhr, status) {
+				  console.log("xhr: "+JSON.stringify(xhr))
+				  if (xhr.no_utilisateur == 0) {
+					  $('#modal').modal('show')
+				  } else {
+					  window.location.replace("accueil.html")					  
+				  }
+	          },
+			  contentType: "application/json; charset=utf-8",
+	          dataType: "json",
+			  error: function (xhr, status) {
+				  console.error("POST /ENI_encheres/rest/authentification error")
+	          }
+		})
+	} else {
+		$('#modal').modal('show')
+		console.log("champs pas rempli")
+	}
 }
 
