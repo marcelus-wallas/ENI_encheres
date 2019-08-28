@@ -25,6 +25,7 @@ public class Encheres_creationBLL {
 	}
 
 	public void newRetrait(Retrait retrait, Utilisateur utilisateur) {
+
 		Retrait retraitTemp = null;
 		if (retrait.getRue() == null || retrait.getCode_postal() == null || retrait.getVille() == null) {
 			Utilisateur user = utilisateurDAL.readUser(utilisateur.getNo_utilisateur());
@@ -36,4 +37,5 @@ public class Encheres_creationBLL {
 		}
 		this.retraitDAL.create(retraitTemp);
 	}
+
 }
