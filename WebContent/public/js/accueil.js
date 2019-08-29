@@ -2,12 +2,12 @@
 
 var jsonEnchereArrayTest = [
   {
-    "idEnchere": "id1",
+    "no_article": "id1",
     "imgPath": "../testDev/img/chat.jpeg",
-    "article": "PC gamer pour travailler",
-    "derniereEnchere": 210,
-    "dateFin": "2018-08-10",
-    "vendeur": "jojo44"
+    "nom_article": "PC gamer pour travailler",
+    "prix_vente": 210,
+    "date_fin_encheres": "2018-08-10",
+    "nom_article": "jojo44"
   },
   {
     "idEnchere": "id2",
