@@ -3,7 +3,6 @@ package fr.eni.encheres.dto;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-
 public class messageErreurDTO {
 
 	private String message_erreur;

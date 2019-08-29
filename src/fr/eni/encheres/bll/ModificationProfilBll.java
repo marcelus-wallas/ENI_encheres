@@ -85,7 +85,7 @@ public class ModificationProfilBll {
 			return user;
 		}
 
-		return user;
+		return null;
 	}
 
 }

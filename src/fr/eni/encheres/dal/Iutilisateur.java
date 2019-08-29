@@ -6,7 +6,7 @@ import fr.eni.encheres.bo.Utilisateur;
 
 public interface Iutilisateur {
 
-	public void create(Utilisateur utilisateur);
+	public Utilisateur create(Utilisateur utilisateur);
 
 	public ArrayList<Utilisateur> read();
 

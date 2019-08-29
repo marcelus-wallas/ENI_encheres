@@ -20,7 +20,7 @@ public class Authentification {
 	@POST()
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public UtilisateurDTO authentification(UtilisateurDTO utilisateurDTO) {		
+	public UtilisateurDTO authentification(UtilisateurDTO utilisateurDTO) {	
 		AuthentificationBll traitement = new AuthentificationBll();
 		Utilisateur dtoToBo = new Utilisateur(utilisateurDTO.getPseudo(), utilisateurDTO.getEmail(), utilisateurDTO.getMot_de_passe());
 		Utilisateur connectedUser = traitement.tryToAuth(dtoToBo);
