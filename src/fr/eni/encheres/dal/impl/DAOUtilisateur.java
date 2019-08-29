@@ -33,7 +33,7 @@ public class DAOUtilisateur implements Iutilisateur {
 	//Compte Affichage
 	private static final String READUSER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur =?;";
 	
-	public void create(Utilisateur utilisateur) {
+	public Utilisateur create(Utilisateur utilisateur) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -58,6 +58,7 @@ public class DAOUtilisateur implements Iutilisateur {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return utilisateur;
 	}
 
 	public ArrayList<Utilisateur> read() {
