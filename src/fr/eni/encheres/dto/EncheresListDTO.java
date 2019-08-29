@@ -11,29 +11,37 @@ import fr.eni.encheres.tools.LocalDateAdapter;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class EncheresListDTO {	
+public class EncheresListDTO {
 
 	// numero utilisateur
 	private String nom_utilisateur;
 	// article
 	private int no_utilisateur;
 	private String nom_article;
-	private int prix_initial;	
+	private int prix_vente;
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	private LocalDate date_fin_encheres = LocalDate.now();
-	
+
 	public EncheresListDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public EncheresListDTO(String nom_utilisateur, int no_utilisateur, String nom_article, int prix_initial,
+	public EncheresListDTO(String nom_utilisateur, int no_utilisateur, String nom_article, int prix_vente,
 			LocalDate date_fin_encheres) {
 		super();
 		this.nom_utilisateur = nom_utilisateur;
 		this.no_utilisateur = no_utilisateur;
 		this.nom_article = nom_article;
-		this.prix_initial = prix_initial;
+		this.prix_vente = prix_vente;
+		this.date_fin_encheres = date_fin_encheres;
+	}
+
+	public EncheresListDTO(int no_utilisateur, String nom_article, int prix_vente, LocalDate date_fin_encheres) {
+		super();
+		this.no_utilisateur = no_utilisateur;
+		this.nom_article = nom_article;
+		this.prix_vente = prix_vente;
 		this.date_fin_encheres = date_fin_encheres;
 	}
 
@@ -61,12 +69,12 @@ public class EncheresListDTO {
 		this.nom_article = nom_article;
 	}
 
-	public int getPrix_initial() {
-		return prix_initial;
+	public int getPrix_vente() {
+		return prix_vente;
 	}
 
-	public void setPrix_initial(int prix_initial) {
-		this.prix_initial = prix_initial;
+	public void setPrix_vente(int prix_vente) {
+		this.prix_vente = prix_vente;
 	}
 
 	public LocalDate getDate_fin_encheres() {
@@ -76,6 +84,5 @@ public class EncheresListDTO {
 	public void setDate_fin_encheres(LocalDate date_fin_encheres) {
 		this.date_fin_encheres = date_fin_encheres;
 	}
-	
-	
+
 }
