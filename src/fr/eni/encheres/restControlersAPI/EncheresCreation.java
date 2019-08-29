@@ -33,7 +33,7 @@ public class EncheresCreation {
 		utilisateur.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
 		enchere.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
 		enchere.setDate_enchere(encheres_creationDTO.getDate_debut_encheres());
-		//articles vendus
+		// articles vendus
 		article_vendu.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
 		article_vendu.setNom_article(encheres_creationDTO.getNom_article());
 		article_vendu.setDescription(encheres_creationDTO.getDescription());
@@ -43,15 +43,13 @@ public class EncheresCreation {
 		article_vendu.setDate_fin_encheres(encheres_creationDTO.getDate_fin_encheres());
 		ArticleVendu article = traitement.newArticle(article_vendu);
 		int idArticle = article.getNo_article();
-		System.out.println(idArticle);
 		// lieu de retrait
 		retrait.setNo_article(idArticle);
 		retrait.setRue(encheres_creationDTO.getRue());
 		retrait.setCode_postal(encheres_creationDTO.getCode_postal());
-		retrait.setVille(encheres_creationDTO.getVille());		
+		retrait.setVille(encheres_creationDTO.getVille());
 		traitement.newRetrait(retrait, utilisateur);
 
-		
 		System.out.println(article_vendu);
 		System.out.println(enchere);
 		System.out.println(utilisateur);

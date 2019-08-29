@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+   	<link rel="stylesheet" href="/ENI_encheres/public/css/bootstrap.min.css">
     <title>Accueil</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/ENI_encheres/public/css/style.css">
   </head>
   <body>
 
@@ -68,18 +67,37 @@
                 </div>
                 <div class="col-8">
                   <div id="selectCategories"></div>
-                  <!-- <select class="form-control" id="exampleFormControlSelect1">
-                    <option>toutes</option>
-                    <option>cat 2</option>
-                    <option>cat 3</option>
-                    <option>cat 4</option>
-                    <option>cat 5</option>
-                  </select> -->
                 </div>
               </div>
             </div>
           </form>
-          <div class="form-check">
+
+				<div class="form-check" id="disabledMenu">
+					<div class="row" style="margin: 2rem;">
+						<div class="col-6">
+							<div class="row">
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="acceuilRadio" id="encheres" value="encheres" checked>
+									<label class="form-check-label" for="enchereRadio">
+										Achats </label>
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="row">
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="accueilRadio" id="vente" value="vente"> <label
+										class="form-check-label" for="venteRadio"> Mes ventes
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			<!-- <div class="form-check">
             <div class="row" style="margin:2rem;">
               <div class="col-6">
                 <div id="achatAccueilMenu">
@@ -142,7 +160,8 @@
                 </div>
               </div>
             </div>
-          </div>
+           --></div>
+          
         </div>
         <div class="col my-auto">
           <div class="row justify-content-md-center">
@@ -155,9 +174,9 @@
     <div id="enchereToPrint"></div>
 
     <!-- export -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/ENI_encheres/public/js/tools/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="/ENI_encheres/public/js/tools/logger.js"></script>
     <script src="/ENI_encheres/public/js/tools/htmlBuilder.js"></script>
     <script src="/ENI_encheres/public/js/tools/cookies.js"></script>

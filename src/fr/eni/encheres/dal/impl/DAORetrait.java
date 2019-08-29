@@ -29,7 +29,6 @@ public class DAORetrait implements Iretrait {
 			pstmt.executeUpdate();
 
 			ResultSet rs = pstmt.getGeneratedKeys();
-			System.out.println(rs.getInt(1));
 			if (rs.next()) {
 				retrait.setNo_article(rs.getInt(1));
 			}
@@ -62,7 +61,7 @@ public class DAORetrait implements Iretrait {
 	public void update(Retrait retrait) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);			
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, retrait.getRue());
 			pstmt.setString(2, retrait.getCode_postal());
 			pstmt.setString(3, retrait.getVille());
@@ -95,17 +94,17 @@ public class DAORetrait implements Iretrait {
 			e.printStackTrace();
 		}
 	}
-	
-	public void deleteAllByUserId(Utilisateur user)
-	{
+
+	public void deleteAllByUserId(Utilisateur user) {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(DELETERETRAITBYUSERID, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement pstmt = cnx.prepareStatement(DELETERETRAITBYUSERID,
+					PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setInt(1, user.getNo_utilisateur());
 			pstmt.executeUpdate();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
