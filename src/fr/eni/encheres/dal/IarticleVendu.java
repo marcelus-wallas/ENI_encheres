@@ -19,4 +19,6 @@ public interface IarticleVendu {
 
 	public ArticleVendu readArticle(int no_article);
 
+	public void updateArticle(ArticleVendu temp);
+
 }

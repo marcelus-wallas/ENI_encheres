@@ -21,6 +21,9 @@ public class DAOArticleVendu implements IarticleVendu {
 
 	// SuppressionProfil
 	private static final String DELETEARTICLESBYUSERID = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
+	
+	//Mofifier enchere
+	private static final String UPDATEARTICLE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, no_categorie = ? WHERE no_article = ?;";
 
 	public ArticleVendu create(ArticleVendu article_vendu) {
 
@@ -137,6 +140,29 @@ public class DAOArticleVendu implements IarticleVendu {
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setInt(1, user.getNo_utilisateur());
 			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateArticle(ArticleVendu article_vendu) {
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATEARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, article_vendu.getNom_article());
+			pstmt.setString(2, article_vendu.getDescription());
+			pstmt.setDate(3, Date.valueOf(article_vendu.getDate_debut_encheres()));
+			pstmt.setDate(4, Date.valueOf(article_vendu.getDate_fin_encheres()));
+			pstmt.setInt(5, article_vendu.getPrix_initial());
+			pstmt.setInt(6, article_vendu.getNo_categorie());
+			pstmt.setInt(7, article_vendu.getNo_article());
+			pstmt.executeUpdate();
+
+			/*
+			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
+			 * article_vendu.setIdentifiant(rs.getInt(1)); }
+			 */
 
 		} catch (Exception e) {
 			e.printStackTrace();

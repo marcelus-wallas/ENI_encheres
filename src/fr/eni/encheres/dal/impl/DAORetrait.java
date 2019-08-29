@@ -62,11 +62,11 @@ public class DAORetrait implements Iretrait {
 	public void update(Retrait retrait) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
-			pstmt.setInt(1, retrait.getNo_article());
-			pstmt.setString(2, retrait.getRue());
-			pstmt.setString(3, retrait.getCode_postal());
-			pstmt.setString(4, retrait.getVille());
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);			
+			pstmt.setString(1, retrait.getRue());
+			pstmt.setString(2, retrait.getCode_postal());
+			pstmt.setString(3, retrait.getVille());
+			pstmt.setInt(4, retrait.getNo_article());
 			pstmt.executeUpdate();
 
 			/*

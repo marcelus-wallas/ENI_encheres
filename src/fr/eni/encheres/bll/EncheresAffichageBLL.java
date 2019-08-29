@@ -26,7 +26,7 @@ public class EncheresAffichageBLL {
 	}
 
 	public ArticleVendu updateArticle(ArticleVendu temp) {
-		articleVenduDAL.update(temp);
+		articleVenduDAL.updateArticle(temp);
 		return temp;
 	}
 

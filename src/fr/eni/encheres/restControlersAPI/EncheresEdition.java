@@ -12,7 +12,6 @@ import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dto.EncheresAffichageDTO;
-import fr.eni.encheres.dto.EncheresCreationDTO;
 
 @Path("/encheres_edition")
 public class EncheresEdition {
@@ -41,11 +40,11 @@ public class EncheresEdition {
 			return null;
 		}
 	}
-	
+
 	@POST()
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void encheres_creation(EncheresCreationDTO encheres_creationDTO) {
+	public void encheres_creation(EncheresAffichageDTO encheresAffichageDTO) {
 		ArticleVendu article_vendu = new ArticleVendu();
 		Enchere enchere = new Enchere();
 		Utilisateur utilisateur = new Utilisateur();
@@ -53,28 +52,28 @@ public class EncheresEdition {
 		// transformation BO en DTO (façon manuelle)
 		EncheresAffichageBLL traitement = new EncheresAffichageBLL();
 
-		utilisateur.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
-		enchere.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
-		enchere.setDate_enchere(encheres_creationDTO.getDate_debut_encheres());
-		//articles vendus
-		article_vendu.setNo_utilisateur(encheres_creationDTO.getNo_utilisateur());
-		article_vendu.setNom_article(encheres_creationDTO.getNom_article());
-		article_vendu.setDescription(encheres_creationDTO.getDescription());
-		article_vendu.setNo_categorie(encheres_creationDTO.getNo_categorie());
-		article_vendu.setPrix_initial(encheres_creationDTO.getPrix_initial());
-		article_vendu.setDate_debut_encheres(encheres_creationDTO.getDate_debut_encheres());
-		article_vendu.setDate_fin_encheres(encheres_creationDTO.getDate_fin_encheres());
-		ArticleVendu article = traitement.updateArticle(article_vendu);
-		int idArticle = article.getNo_article();
-		System.out.println(idArticle);
+		utilisateur.setNo_utilisateur(encheresAffichageDTO.getNo_utilisateur());
+		enchere.setNo_utilisateur(encheresAffichageDTO.getNo_utilisateur());
+		enchere.setDate_enchere(encheresAffichageDTO.getDate_debut_encheres());
+
+		// articles vendus
+		article_vendu.setNo_article(encheresAffichageDTO.getNo_article());
+		article_vendu.setNo_utilisateur(encheresAffichageDTO.getNo_utilisateur());
+		article_vendu.setNom_article(encheresAffichageDTO.getNom_article());
+		article_vendu.setDescription(encheresAffichageDTO.getDescription());
+		article_vendu.setNo_categorie(encheresAffichageDTO.getNo_categorie());
+		article_vendu.setPrix_initial(encheresAffichageDTO.getPrix_initial());
+		article_vendu.setDate_debut_encheres(encheresAffichageDTO.getDate_debut_encheres());
+		article_vendu.setDate_fin_encheres(encheresAffichageDTO.getDate_fin_encheres());
+		traitement.updateArticle(article_vendu);
+
 		// lieu de retrait
-		retrait.setNo_article(idArticle);
-		retrait.setRue(encheres_creationDTO.getRue());
-		retrait.setCode_postal(encheres_creationDTO.getCode_postal());
-		retrait.setVille(encheres_creationDTO.getVille());		
+		retrait.setNo_article(encheresAffichageDTO.getNo_article());
+		retrait.setRue(encheresAffichageDTO.getRue());
+		retrait.setCode_postal(encheresAffichageDTO.getCode_postal());
+		retrait.setVille(encheresAffichageDTO.getVille());
 		traitement.updateRetrait(retrait, utilisateur);
 
-		
 		System.out.println(article_vendu);
 		System.out.println(enchere);
 		System.out.println(utilisateur);
