@@ -8,23 +8,29 @@ import fr.eni.encheres.dal.IarticleVendu;
 import fr.eni.encheres.dal.Iretrait;
 import fr.eni.encheres.dal.Iutilisateur;
 
-public class Encheres_creationBLL {
+public class EncheresAffichageBLL {
 
 	private IarticleVendu articleVenduDAL;
-	private Iretrait retraitDAL;
 	private Iutilisateur utilisateurDAL;
+	private Iretrait retraitDAL;
 
-	public Encheres_creationBLL() {
+	public EncheresAffichageBLL() {
 		this.articleVenduDAL = Factory.getArticleVendu();
-		this.retraitDAL = Factory.getRetrait();
 		this.utilisateurDAL = Factory.getUtilisateur();
+		this.retraitDAL = Factory.getRetrait();
 	}
 
-	public ArticleVendu newArticle(ArticleVendu i) {
-		return articleVenduDAL.create(i);
+	public ArticleVendu tryToView(ArticleVendu article) {
+		ArticleVendu articleAfficher = articleVenduDAL.readArticle(article.getNo_article());
+		return articleAfficher;
 	}
 
-	public void newRetrait(Retrait retrait, Utilisateur utilisateur) {
+	public ArticleVendu updateArticle(ArticleVendu temp) {
+		articleVenduDAL.updateArticle(temp);
+		return temp;
+	}
+
+	public void updateRetrait(Retrait retrait, Utilisateur utilisateur) {
 
 		Retrait retraitTemp = null;
 		if (retrait.getRue() == null || retrait.getCode_postal() == null || retrait.getVille() == null) {
@@ -35,7 +41,7 @@ public class Encheres_creationBLL {
 			retraitTemp = new Retrait(retrait.getNo_article(), retrait.getRue(), retrait.getCode_postal(),
 					retrait.getVille());
 		}
-		this.retraitDAL.create(retraitTemp);
+		this.retraitDAL.update(retraitTemp);
 	}
 
 }

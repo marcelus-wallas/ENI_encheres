@@ -17,4 +17,8 @@ public interface IarticleVendu {
 	
 	public void deleteAllByUserId(Utilisateur user);
 
+	public ArticleVendu readArticle(int no_article);
+
+	public void updateArticle(ArticleVendu temp);
+
 }
