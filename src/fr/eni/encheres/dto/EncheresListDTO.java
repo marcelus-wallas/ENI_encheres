@@ -14,7 +14,7 @@ import fr.eni.encheres.tools.LocalDateAdapter;
 public class EncheresListDTO {
 
 	// numero utilisateur
-	private String nom_utilisateur;
+	//private String nom_utilisateur;
 	// article
 	private int no_utilisateur;
 	private String nom_article;
@@ -26,7 +26,7 @@ public class EncheresListDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+/*
 	public EncheresListDTO(String nom_utilisateur, int no_utilisateur, String nom_article, int prix_vente,
 			LocalDate date_fin_encheres) {
 		super();
@@ -36,7 +36,7 @@ public class EncheresListDTO {
 		this.prix_vente = prix_vente;
 		this.date_fin_encheres = date_fin_encheres;
 	}
-
+*/
 	public EncheresListDTO(int no_utilisateur, String nom_article, int prix_vente, LocalDate date_fin_encheres) {
 		super();
 		this.no_utilisateur = no_utilisateur;
@@ -44,7 +44,7 @@ public class EncheresListDTO {
 		this.prix_vente = prix_vente;
 		this.date_fin_encheres = date_fin_encheres;
 	}
-
+/*
 	public String getNom_utilisateur() {
 		return nom_utilisateur;
 	}
@@ -52,7 +52,7 @@ public class EncheresListDTO {
 	public void setNom_utilisateur(String nom_utilisateur) {
 		this.nom_utilisateur = nom_utilisateur;
 	}
-
+*/
 	public int getNo_utilisateur() {
 		return no_utilisateur;
 	}
@@ -84,5 +84,20 @@ public class EncheresListDTO {
 	public void setDate_fin_encheres(LocalDate date_fin_encheres) {
 		this.date_fin_encheres = date_fin_encheres;
 	}
+	@Override
+	public String toString() {
+		return "EncheresListDTO [no_utilisateur=" + no_utilisateur + ", nom_article=" + nom_article + ", prix_vente="
+				+ prix_vente + ", date_fin_encheres=" + date_fin_encheres + "]";
+	}
+
+	/*@Override
+	public String toString() {
+		return "EncheresListDTO [nom_utilisateur=" + nom_utilisateur + ", no_utilisateur=" + no_utilisateur
+				+ ", nom_article=" + nom_article + ", prix_vente=" + prix_vente + ", date_fin_encheres="
+				+ date_fin_encheres + "]";
+	}
+	
+	*/
+	
 
 }

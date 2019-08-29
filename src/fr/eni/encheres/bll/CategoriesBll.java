@@ -10,7 +10,7 @@ public class CategoriesBll {
 	private static Icategorie categorieDAL;
 	
 	public CategoriesBll(){
-		this.categorieDAL = Factory.getCategorie();
+		CategoriesBll.categorieDAL = Factory.getCategorie();
 	}
 	
 	public ArrayList<Categorie> getAll() {

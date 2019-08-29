@@ -8,10 +8,10 @@ import fr.eni.encheres.dal.IarticleVendu;
 
 public class EncheresListBLL {
 
-	private IarticleVendu articleVenduDAL;
+	private static IarticleVendu articleVenduDAL;
 
 	public EncheresListBLL() {
-		this.articleVenduDAL = Factory.getArticleVendu();
+		EncheresListBLL.articleVenduDAL = Factory.getArticleVendu();
 	}
 
 	public ArrayList<ArticleVendu> getAllArticle() {

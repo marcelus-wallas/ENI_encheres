@@ -1,6 +1,8 @@
 package fr.eni.encheres.restControlersAPI;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,17 +21,15 @@ public class EncheresList {
 
 		@GET()
 		@Produces(MediaType.APPLICATION_JSON)
-		public ArrayList<EncheresListDTO> listEncheres() {
+		public List<EncheresListDTO> listEncheres() {
 			EncheresListBLL traitement = new EncheresListBLL();
-			ArrayList<ArticleVendu> articles = traitement.getAllArticle();
-			ArrayList<EncheresListDTO> encheresListDTO = new ArrayList<>();
+			List<ArticleVendu> articles = traitement.getAllArticle();
+			List<EncheresListDTO> encheresListDTO = new ArrayList<>();
 			// transformation BO en DTO (façon manuelle)
 			for (ArticleVendu article : articles) {
 				encheresListDTO.add(new EncheresListDTO(article.getNo_utilisateur(), article.getNom_article(),
 						article.getPrix_vente(), article.getDate_fin_encheres()));
-				System.out.println(article);
 			}
-			System.out.println(articles);
 			System.out.println(encheresListDTO);
 			return encheresListDTO;
 		}
