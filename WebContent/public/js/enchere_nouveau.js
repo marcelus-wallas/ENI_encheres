@@ -89,59 +89,7 @@ function validation() {
 			return null
 		}
 	}
-	
-	console.log("JSON: "+JSON.stringify(jsonRequest))
-	return jsonRequest
-}
 
-function prepareRequest() {
-	var jsontosend = {}
-	jsontosend.pseudo = "MiaMiam"
-	jsontosend.email = ""
-	jsontosend.mot_de_passe = "password"
-	console.log("jsontosend: "+JSON.stringify(jsontosend))
-	return jsontosend
-}
-
-function sendNewEnchere() {
-	var jsonToSend = validation()
-	if (validation() != null){
-		console.log("JSON: "+JSON.stringify(jsonToSend))
-		
-		$.ajax({
-			  type: "POST",
-			  url: "http://localhost:8080/ENI_encheres/rest/authentification",
-			  data: prepareRequest(),
-			  success: function (xhr, status) {
-				  console.log("j'ai reussi")
-				  window.location.replace("accueil.html")
-	          },
-			  contentType: "application/json; charset=utf-8",
-	          dataType: "json",
-			  error: function (xhr, status) {
-				  console.error("POST /ENI_encheres/rest/authentification error")
-				  console.error("xhr: "+JSON.stringify(xhr))
-	          }
-		})
-		
-//		$.ajax({
-//			type: "POST",
-//			url: "http://localhost:8080/ENI_encheres/rest/encheres_creation",
-//			data: jsonToSend,
-//			success: function (xhr, status) {
-//				console.log("xhr: "+JSON.stringify(xhr))
-//				$('#messageError').replaceWith('<h6 id="messageError">Votre enchere a été enregistrée</h6>')
-//				$('#modal').modal('show')
-//				setTimeout(function(){ window.location.replace("accueil.html") }, 2000)
-//			},
-//			contentType: "application/json",
-//			dataType: "json",
-//			error: function (xhr, status) {
-//				console.error("POST /ENI_encheres/rest/encheres_creation error")
-//				console.error("xhr: "+JSON.stringify(xhr))
-//			}
-//		})
-	}
 }
 
 function main() {
