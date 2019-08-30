@@ -1,142 +1,145 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/ENI_encheres/public/css/bootstrap.min.css">
-    <title>Detail d'une enchere</title>
-    <link rel="stylesheet" href="/ENI_encheres/public/css/style.css">
-  </head>
-  <body>
+<link rel="stylesheet" href="/ENI_encheres/public/css/bootstrap.min.css">
+<title>Detail d'une enchere</title>
+<link rel="stylesheet" href="/ENI_encheres/public/css/style.css">
+</head>
+<body>
 
-    <!-- JSON responce -->
-    <!--
+	<!-- JSON responce -->
+	<!--
 
 
 
     -->
 
-    <!-- top bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="./accueil.html">ENI_encheres</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+	<!-- top bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="./accueil.html">ENI_encheres</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="./accueil.html">Enchères</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./encheres_nouveau.html">Vendre un article</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./compte_mon_profil.html">Mon profil</a>
-          </li>
-          <li class="nav-item">
-            <a onclick="deconnexion()" class="nav-link" href="index.html">Déconnexion</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="./accueil.html">Enchères</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="./encheres_nouveau.html">Vendre un article</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="./compte_mon_profil.html">Mon profil</a></li>
+				<li class="nav-item"><a onclick="deconnexion()"
+					class="nav-link" href="index.html">Déconnexion</a></li>
+			</ul>
+		</div>
+	</nav>
 
-    <!-- titre -->
-    <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-          <h1>Detail d'une enchere</h1>
-        </div>
-      </div>
-    </div>
+	<!-- titre -->
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<h1>Detail d'une enchere</h1>
+			</div>
+		</div>
+	</div>
 
-    <!-- Main content -->
-    <div class="row justify-content-md-center" style="margin-top:2rem;">
-      <div class="col col-lg-3">
-        <img src="../testDev/img/chat.jpeg">
-      </div>
+	<!-- Main content -->
+	<div class="row justify-content-md-center" style="margin-top: 2rem;">
+		<div class="col col-lg-3">
+			<img src="../testDev/img/chat.jpeg">
+		</div>
 
-      <div class="col col-lg-7">
-        <form>
+		<div class="col col-lg-7">
+			<form>
 
-          <div class="form-group row">
-            <div class="col">
-              <div class="row" style="margin:1rem;">
-                <div id="echereDetailsArticle"></div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Description : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsDescription"></div>
-                </div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Categorie : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsCategorie"></div>
-                </div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Meilleur offre : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsMeilleurOffre"></div>
-                </div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Mise à prix : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsMiseAPrix"></div>
-                </div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Fin de l'enchère : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsDateFin"></div>
-                </div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Retrait : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsRetrait"></div>
-                </div>
-              </div>
-              <div class="row" style="margin:1rem;">
-                <label class="col-sm-4 col-form-label">Vendeur : </label>
-                <div class="col-sm-8">
-                  <div id="echereDetailsVendeur"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+				<div class="form-group row">
+					<div class="col">
+						<div class="row" style="margin: 1rem;">
+							<div id="echereDetailsArticle"></div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Description : </label>
+							<div class="col-sm-8">
+								<div id="echereDetailsDescription"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Categorie : </label>
+							<div class="col-sm-8">
+								<div id="echereDetailsCategorie"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Meilleur offre : </label>
+							<div class="col-sm-8">
+								<div id="echereDetailsMeilleurOffre"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Mise à prix : </label>
+							<div class="col-sm-8">
+								<div id="echereDetailsMiseAPrix"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Fin de l'enchère :
+							</label>
+							<div class="col-sm-8">
+								<div id="echereDetailsDateFin"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Retrait : </label>
+							<div class="col-sm-8">
+								<div id="echereDetailsRetrait"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Vendeur : </label>
+							<div class="col-sm-8">
+								<div id="echereDetailsVendeur"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        </form>
-      </div>
-    </div>
+			</form>
+		</div>
+	</div>
 
-    <div class="row justify-content-md-center">
-      <div class="col-4">
-        <div class="row">
-          <label class="col-sm-4 col-form-label">Ma proposition : </label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" placeholder="0">
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="row justify-content-md-center">
-          <a href="#" class="btn btn-outline-success my-2 my-sm-0" role="button">Enchérir</a>
-        </div>
-      </div>
-    </div>
+	<div class="row justify-content-md-center">
+		<div class="col-4">
+			<div class="row">
+				<label class="col-sm-4 col-form-label">Ma proposition : </label>
+				<div class="col-sm-8">
+					<input type="number" class="form-control" placeholder="0">
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="row justify-content-md-center">
+				<a href="#" class="btn btn-outline-success my-2 my-sm-0"
+					role="button">Enchérir</a>
+			</div>
+		</div>
+	</div>
 
-    <!-- export -->
-    <script src="/ENI_encheres/public/js/tools/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="/ENI_encheres/public/js/tools/bootstrap.min.js"></script>
-    <script src="/ENI_encheres/public/js/tools/logger.js"></script>
-    <script src="/ENI_encheres/public/js/tools/htmlBuilder.js"></script>
-    <script src="/ENI_encheres/public/js/tools/cookies.js"></script>
-    <script src="/ENI_encheres/public/js/compte_details.js"></script>
-  </body>
+	<!-- export -->
+	<script src="/ENI_encheres/public/js/tools/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="/ENI_encheres/public/js/tools/bootstrap.min.js"></script>
+	<script src="/ENI_encheres/public/js/tools/logger.js"></script>
+	<script src="/ENI_encheres/public/js/tools/htmlBuilder.js"></script>
+	<script src="/ENI_encheres/public/js/tools/cookies.js"></script>
+	<script src="/ENI_encheres/public/js/compte_details.js"></script>
+</body>
 </html>

@@ -1,85 +1,92 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Index</title>
-	 <link rel="stylesheet" href="public/css/style.css">
-	 <link rel="stylesheet" href="public/css/bootstrap.min.css">
-  </head>
-  <body>
+<title>Index</title>
+<link rel="stylesheet" href="public/css/style.css">
+<link rel="stylesheet" href="public/css/bootstrap.min.css">
+</head>
+<body>
 
-    <!-- JSON responce -->
-    <!--
+	<!-- JSON responce -->
+	<!--
 
 
 
     -->
 
-    <!-- top bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="index.html">ENI_encheres</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+	<!-- top bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="index.html">ENI_encheres</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="public/html/compte_authentification.html">S'inscrire - se connecter</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link"
+					href="public/html/compte_authentification.html">S'inscrire - se
+						connecter</a></li>
+			</ul>
+		</div>
+	</nav>
 
-    <!-- titre -->
-    <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-          <h1>Liste des enchères</h1>
-        </div>
-      </div>
-    </div>
+	<!-- titre -->
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<h1>Liste des enchères</h1>
+			</div>
+		</div>
+	</div>
 
-    <!-- Main content -->
-    <div classe="container">
-      <div class="row" style="margin:2rem;">
-        <div class="col">
-          <form>
-            <div class="row justify-content-md-center">
-              <h3>Filtres : </h3>
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            </div>
-            <div class="form-group">
-              <div class="row" style="margin:2rem;">
-                <div class="col-4">
-                  <label>Catégorie</label>
-                </div>
-                <div class="col-8">
-                  <div id="selectCategories"></div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col my-auto">
-          <div class="row justify-content-md-center">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </div>
-        </div>
-      </div>
-    </div>
+	<!-- Main content -->
+	<div class="container">
+		<div class="row" style="margin: 2rem;">
+			<div class="col">
+				<form>
+					<div class="row justify-content-md-center">
+						<h3>Filtres :</h3>
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Search" aria-label="Search">
+					</div>
+					<div class="form-group">
+						<div class="row" style="margin: 2rem;">
+							<div class="col-4">
+								<label>Catégorie</label>
+							</div>
+							<div class="col-8">
+								<div id="selectCategories"></div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col my-auto">
+				<div class="row justify-content-md-center">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div id="enchereToPrint"></div>
+	<div id="enchereToPrint"></div>
 
-    <!-- export -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script src="public/js/tools/logger.js" type"text/javascript"></script>
-    <script src="public/js/tools/htmlBuilder.js" type"text/javascript"></script>
-    <script src="public/js/tools/cookies.js"></script>
-    <script src="public/js/index.js" type"text/javascript"></script>
-  </body>
+	<!-- export -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="public/js/tools/logger.js" type="text/javascript"></script>
+	<script src="public/js/tools/htmlBuilder.js" type="text/javascript"></script>
+	<script src="public/js/tools/cookies.js"></script>
+	<script src="public/js/index.js" type="text/javascript"></script>
+</body>
 </html>
