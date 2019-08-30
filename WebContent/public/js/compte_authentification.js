@@ -15,14 +15,6 @@ function prepareRequest() {
 	
 }
 
-function serverResponce(data) {
-	if (data) {
-		window.location.replace("./acceuil.html")
-	} else {
-		console.log("responce false")
-	}
-}
-
 function tryToAuth() {
 	if ($('#login').val() != "" && $('#password').val() != ""){
 		$.ajax({

@@ -13,7 +13,7 @@ public class AuthentificationBll {
 	
 	public Utilisateur tryToAuth(Utilisateur userAuth)
 	{
-		System.out.println("userAuth: "+userAuth);
+		System.out.println("BLL userAuth: "+userAuth);
 		if(userAuth.getEmail() != null)
 		{
 			//email

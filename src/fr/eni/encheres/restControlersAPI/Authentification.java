@@ -5,7 +5,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
 
 import fr.eni.encheres.bll.AuthentificationBll;
 import fr.eni.encheres.bo.Utilisateur;
@@ -20,7 +22,7 @@ public class Authentification {
 	@POST()
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public UtilisateurDTO authentification(UtilisateurDTO utilisateurDTO) {		
+	public UtilisateurDTO authentification(UtilisateurDTO utilisateurDTO) {
 		AuthentificationBll traitement = new AuthentificationBll();
 		Utilisateur dtoToBo = new Utilisateur(utilisateurDTO.getPseudo(), utilisateurDTO.getEmail(), utilisateurDTO.getMot_de_passe());
 		Utilisateur connectedUser = traitement.tryToAuth(dtoToBo);

@@ -29,5 +29,5 @@ function eraseCookie(name) {
 function deconnexion()
 {
 	createCookie('IdUser',"",-1);
-	window.location.replace("accueil.html")
+	window.location.replace("WebContent/index.html")
 }

@@ -37,23 +37,6 @@ public class Encheres_creationDTO {
 	}
 
 	public Encheres_creationDTO(int no_utilisateur, String nom_article, String description, int no_categorie,
-			int prix_initial, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int no_article, String rue,
-			String code_postal, String ville) {
-		super();
-		this.no_utilisateur = no_utilisateur;
-		this.nom_article = nom_article;
-		this.description = description;
-		this.no_categorie = no_categorie;
-		this.prix_initial = prix_initial;
-		this.date_debut_encheres = date_debut_encheres;
-		this.date_fin_encheres = date_fin_encheres;
-		this.no_article = no_article;
-		this.rue = rue;
-		this.code_postal = code_postal;
-		this.ville = ville;
-	}
-	
-	public Encheres_creationDTO(int no_utilisateur, String nom_article, String description, int no_categorie,
 			int prix_initial, LocalDate date_debut_encheres, LocalDate date_fin_encheres, String rue,
 			String code_postal, String ville) {
 		super();
@@ -67,18 +50,6 @@ public class Encheres_creationDTO {
 		this.rue = rue;
 		this.code_postal = code_postal;
 		this.ville = ville;
-	}
-	
-	public Encheres_creationDTO(int no_utilisateur, String nom_article, String description, int no_categorie,
-			int prix_initial, LocalDate date_debut_encheres, LocalDate date_fin_encheres) {
-		super();
-		this.no_utilisateur = no_utilisateur;
-		this.nom_article = nom_article;
-		this.description = description;
-		this.no_categorie = no_categorie;
-		this.prix_initial = prix_initial;
-		this.date_debut_encheres = date_debut_encheres;
-		this.date_fin_encheres = date_fin_encheres;
 	}
 
 	public int getNo_utilisateur() {

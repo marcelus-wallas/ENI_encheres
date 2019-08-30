@@ -30,7 +30,6 @@ function validation() {
 		$('#modal').modal('show')
 		return null
 	}
-	console.log("$('#selectCategoriesNouveau').val(): "+$('#selectCategoriesNouveau').val())
 	if ($('#selectCategoriesNouveau').val() != "") {
 		jsonRequest.no_categorie = $('#selectCategoriesNouveau').val()
 	} else {
@@ -90,13 +89,18 @@ function validation() {
 			return null
 		}
 	}
+	
 	console.log("JSON: "+JSON.stringify(jsonRequest))
-	return jsonRequest
+	return JSON.stringify(jsonRequest)
 }
 
 function sendNewEnchere() {
 	var jsonToSend = validation()
+	console.log("jsonToSend: "+JSON.stringify(jsonToSend))
+	
 	if (jsonToSend != null){
+		debbug("enchere_nouveau.js jsontosend: "+JSON.stringify(jsonToSend))
+		
 		$.ajax({
 			type: "POST",
 			url: "http://localhost:8080/ENI_encheres/rest/encheres_creation",
@@ -107,7 +111,8 @@ function sendNewEnchere() {
 				$('#modal').modal('show')
 				setTimeout(function(){ window.location.replace("accueil.html") }, 2000)
 			},
-			contentType: "application/json; charset=utf-8",
+			contentType: "application/json",
+			dataType: "json",
 			error: function (xhr, status) {
 				console.error("POST /ENI_encheres/rest/encheres_creation error")
 				console.error("xhr: "+JSON.stringify(xhr))
@@ -118,6 +123,7 @@ function sendNewEnchere() {
 
 function main() {
 	$.get("/ENI_encheres/rest/categories", function(arrayCategories, status){
+		console.log("arrayCategories: "+JSON.stringify(arrayCategories))
 		setupEnchereNouveau(arrayCategories.categoriesDTO)
 	})
 }
