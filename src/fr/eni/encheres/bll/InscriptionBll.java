@@ -4,8 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.bo.MessageErreur;
-import fr.eni.encheres.bo.Pair;
 import fr.eni.encheres.dal.Factory;
 import fr.eni.encheres.dal.Iutilisateur;
 
@@ -17,10 +15,8 @@ public class InscriptionBll {
 		this.utilisateurDAL = Factory.getUtilisateur();
 	}
 	
-	public Pair<Utilisateur, MessageErreur> tryToInscription(Utilisateur user, String confirmation)
+	public int tryToInscription(Utilisateur user, String confirmation)
 	{
-		MessageErreur messageErreur = new MessageErreur();
-
 		Utilisateur temp = new Utilisateur(user.getPseudo(),
 											user.getNom(),
 											user.getPrenom(),
@@ -33,17 +29,12 @@ public class InscriptionBll {
 											200,
 											false);
 		
-		Pair<Utilisateur, MessageErreur> result = new Pair<Utilisateur, MessageErreur>();
-		result.first = user;
-		result.second = messageErreur;
-		
 		String mp= user.getMot_de_passe();
 				
 		if(mp.equals(confirmation) == false)
 		{
 			//Mot de passe != Confirmation
-			messageErreur.setMesssage_erreur("Votre Confirmation est différente de votre mot de passe.");
-			user = null;
+			return -1;
 		}
 
 		 Utilisateur verifEmail = utilisateurDAL.verificationEmail(temp.getEmail());
@@ -51,8 +42,7 @@ public class InscriptionBll {
 		 if(verifEmail.getNom() != null)
 		 {
 			 //Email existant
-			 messageErreur.setMesssage_erreur("Email déja existant.");
-			 user = null;
+			 return -2;
 		 }
 			
 		 Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+$"); 
@@ -60,26 +50,23 @@ public class InscriptionBll {
 		 if(matcher.matches() == false)
 		 {
 			//Pseudo caractères incorrects
-			 messageErreur.setMesssage_erreur("Le Pseudo ne doit contenir que des caractères alphanumériques");
-			 user = null;
+			 return -3;
 		 } 
 		 
 		Utilisateur verifPseudo = utilisateurDAL.verificationPseudo(temp.getPseudo()); 
 		 if(verifPseudo.getNom() != null)
 		 {
 			 //Pseudo existant
-			 messageErreur.setMesssage_erreur("Pseudo déja existant.");
-			 user = null;
+			 return -4;
 		 }
 			 
-		 if(verifEmail.getNom() == null && verifPseudo.getNom() == null && matcher.matches() == true)
+		 if(verifEmail.getNom() == null && verifPseudo.getNom() == null )
 		 {
-			 //Création de l'utilisateur 	
-			 messageErreur.setMesssage_erreur("Inscription OK");
-			 user = utilisateurDAL.create(temp);
+			 //Création de l'utilisateur
+			 System.out.println("UtilisateurBLL"+ temp);
+			 return utilisateurDAL.create(temp).getNo_utilisateur();
 		 }
-		
-		 return result;
+		 return 0;
 		
 	}
 }

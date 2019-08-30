@@ -3,15 +3,15 @@ package fr.eni.encheres.dto;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class messageErreurDTO {
+public class MessageErreurDTO {
 
 	private String message_erreur;
-
-	public messageErreurDTO() {
+	
+	public MessageErreurDTO() {
 		super();
 	}
 
-	public messageErreurDTO(String message_erreur) {
+	public MessageErreurDTO(String message_erreur) {
 		super();
 		this.message_erreur = message_erreur;
 	}

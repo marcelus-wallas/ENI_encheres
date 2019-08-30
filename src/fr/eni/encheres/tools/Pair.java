@@ -1,11 +1,10 @@
-package fr.eni.encheres.bo;
+package fr.eni.encheres.tools;
 
 public class Pair<T, V> {
-	
-	 public T first;
-	 public V second;
-	 
-	 
+
+	public T first;
+	public V second;
+
 	public T getFirst() {
 		return first;
 	}

@@ -23,7 +23,7 @@ public class Categories {
 
 	@GET()
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<CategoriesDTO> categories(@Context Request request) {
+	public List<CategoriesDTO> categories() {
 		CategoriesBll traitement = new CategoriesBll();
 		List<Categorie> categories = traitement.getAll();
 		List<CategoriesDTO> categoriesDTO = new ArrayList<>();

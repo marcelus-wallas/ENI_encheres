@@ -17,6 +17,23 @@
 
 
     -->
+    
+    <!-- Modal -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Erreur Connexion</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<div id="messageError"></div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
     <!-- top bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -60,7 +77,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Pseudo : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Pseudo">
+                  <input id="pseudo" type="text" class="form-control" placeholder="Pseudo">
                 </div>
               </div>
             </div>
@@ -68,7 +85,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Nom : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Nom">
+                  <input id="nom" type="text" class="form-control" placeholder="Nom">
                 </div>
               </div>
             </div>
@@ -79,7 +96,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Prénom : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Prenom">
+                  <input id="prenom" type="text" class="form-control" placeholder="Prenom">
                 </div>
               </div>
             </div>
@@ -87,7 +104,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Email : </label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control" placeholder="Email">
+                  <input id="email" type="email" class="form-control" placeholder="Email">
                 </div>
               </div>
             </div>
@@ -98,7 +115,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Téléphone : </label>
                 <div class="col-sm-8">
-                  <input type="tel" class="form-control" placeholder="Telephone">
+                  <input id="telephone" type="tel" class="form-control" placeholder="Telephone">
                 </div>
               </div>
             </div>
@@ -106,7 +123,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Rue : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Rue">
+                  <input id="rue" type="text" class="form-control" placeholder="Rue">
                 </div>
               </div>
             </div>
@@ -117,7 +134,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Code postal : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Code postal">
+                  <input id="code_postal" type="text" class="form-control" placeholder="Code postal">
                 </div>
               </div>
             </div>
@@ -125,7 +142,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Ville : </label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Ville">
+                  <input id="ville" type="text" class="form-control" placeholder="Ville">
                 </div>
               </div>
             </div>
@@ -136,7 +153,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Mot de passe : </label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" placeholder="Mot de passe">
+                  <input id="mot_de_passe" type="password" class="form-control" placeholder="Mot de passe">
                 </div>
               </div>
             </div>
@@ -144,7 +161,7 @@
               <div class="row">
                 <label class="col-sm-4 col-form-label">Confirmation : </label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" placeholder="Confirmation">
+                  <input id="confirmation" type="password" class="form-control" placeholder="Confirmation">
                 </div>
               </div>
             </div>
@@ -157,7 +174,7 @@
     <div class="row">
       <div class="col-6 d-flex align-items-end flex-column">
         <!-- Enregistrer en base -->
-        <a href="./accueil.html" class="btn btn-outline-success my-2 my-sm-0" role="button">Enregistrer</a>
+        <a onclick="tryToCreateUser()" class="btn btn-outline-success my-2 my-sm-0" role="button">Enregistrer</a>
       </div>
       <div class="col-6">
         <a href="./index.html" class="btn btn-outline-success my-2 my-sm-0" role="button">Annuler</a>
@@ -165,7 +182,7 @@
     </div>
 
     <!-- export -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="../js/tools/logger.js"></script>
