@@ -47,7 +47,10 @@ var jsonEnchereArrayTest = [
 function main() {
 	$.get("rest/categories", function(arrayCategories, status){
 		console.log("arrayCategories: "+JSON.stringify(arrayCategories))
-		indexSetUpHtml(jsonEnchereArrayTest, arrayCategories.categoriesDTO)
+		$.get("rest/categories", function(jsonEncheresArray, status){
+			console.log("jsonEncheresArray: "+jsonEncheresArray)
+			indexSetUpHtml(jsonEncheresArray, arrayCategories.categoriesDTO)
+		})
 	})
 }
 

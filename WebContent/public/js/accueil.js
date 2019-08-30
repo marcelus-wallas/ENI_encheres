@@ -45,8 +45,14 @@ var jsonEnchereArrayTest = [
 ]
 
 function main() {
-	$.get("/ENI_encheres/rest/categories", function(arrayCategories, status){
-		accueilSetUpHtml(jsonEnchereArrayTest, arrayCategories.categoriesDTO)
+	console.log("main")
+	$.get("rest/categories", function(arrayCategories, status){
+		indexSetUpHtml(jsonEnchereArrayTest, arrayCategories.categoriesDTO)
+		console.log("arrayCategories: "+JSON.stringify(arrayCategories))
+//		$.get("rest/categories", function(jsonEncheresArray, status){
+//			console.log("jsonEncheresArray: "+jsonEncheresArray)
+//			
+//		})
 	})
 }
 

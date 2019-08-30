@@ -466,7 +466,11 @@ function buildCol(jsonEnchereArray, indexEnchereArray) {
     htmlCard += '<div class="card-body">'
     htmlCard += '<div class="row">'
     htmlCard += '<div class="col-4">'
-    htmlCard += '<img src="'+ jsonEnchereArray[indexEnchereArray].imgPath +'">'
+    if (jsonEnchereArray[indexEnchereArray].imgPath != undefined) {
+    	htmlCard += '<img src="'+ jsonEnchereArray[indexEnchereArray].imgPath +'">'
+    } else {
+    	htmlCard += '<img src="">'
+    }
     htmlCard += '</div>'
     htmlCard += '<div class="col-8">'
     htmlCard += '<a href="'+ jsonEnchereArray[indexEnchereArray].idEnchere +'" class="card-link">'
