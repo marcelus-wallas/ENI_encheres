@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Nouveau troc</title>
+<link rel="stylesheet" href="/ENI_encheres/public/css/bootstrap.min.css">
+<link rel="stylesheet" href="/ENI_encheres/public/css/style.css">
+</head>
+<body>
+
+	<!-- JSON responce -->
+	<!--
+
+
+
+    -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div id="messageError"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- top bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="./accueil.html">ENI_encheres</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="./accueil.html">Enchères</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="./encheres_nouveau.html">Vendre un article</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="./compte_mon_profil.html">Mon profil</a></li>
+				<li class="nav-item"><a onclick="deconnexion()"
+					class="nav-link" href="index.html">Déconnexion</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- titre -->
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<h1>Nouvelle vente</h1>
+			</div>
+		</div>
+	</div>
+
+	<!-- Main content -->
+	<div class="row justify-content-md-center" style="margin-top: 2rem;">
+		<div class="col col-lg-3">
+			<img src="/ENI_encheres/public/testDev/img/chat.jpeg">
+		</div>
+
+		<div class="col col-lg-7">
+			<form>
+
+				<div class="form-group row">
+					<div class="col">
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Article : </label>
+							<div class="col-sm-8">
+								<input id="nom_article" type="text" class="form-control"
+									placeholder="Article">
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Description : </label>
+							<div class="col-sm-8">
+								<input id="description" type="text" class="form-control"
+									placeholder="Description">
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Categorie : </label>
+							<div class="col-sm-8">
+								<div id="selectCategoriesNouveau"></div>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Photo de l'article
+								: </label>
+							<div class="col-sm-8">
+								<button class="btn btn-outline-success my-2 my-sm-0"
+									type="submit" disabled>UPLOADER</button>
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label id="prix_initial" class="col-sm-4 col-form-label">Mise
+								à prix : </label>
+							<div class="col-sm-8">
+								<input id="prixInitial" min="0" type="number"
+									class="form-control" placeholder="0">
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Debut de l'enchère
+								: </label>
+							<div class="col-sm-8">
+								<input id="date_debut_encheres" type="date" class="form-control">
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Fin de l'enchère :
+							</label>
+							<div class="col-sm-8">
+								<input id="date_fin_encheres" type="date" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="row justify-content-md-center" style="margin-top: 2rem;">
+		<div class="col-8">
+			<h5>Retrait</h5>
+			<form>
+
+				<div class="form-group row">
+					<div class="col">
+
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Rue : </label>
+							<div class="col-sm-8">
+								<input id="rue" type="text" class="form-control"
+									placeholder="Rue">
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Code postal : </label>
+							<div class="col-sm-8">
+								<input id="code_postal" type="text" class="form-control"
+									placeholder="Code postal">
+							</div>
+						</div>
+						<div class="row" style="margin: 1rem;">
+							<label class="col-sm-4 col-form-label">Ville : </label>
+							<div class="col-sm-8">
+								<input id="ville" type="text" class="form-control"
+									placeholder="Ville">
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-6 d-flex align-items-end flex-column">
+			<a onclick="sendNewEnchere();"
+				class="btn btn-outline-success my-2 my-sm-0" role="button">Créer</a>
+		</div>
+		<div class="col-6">
+			<a href="./accueil.html" class="btn btn-outline-success my-2 my-sm-0"
+				role="button">Annuler</a>
+		</div>
+	</div>
+
+	<!-- export -->
+	<script src="/ENI_encheres/public/js/tools/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="/ENI_encheres/public/js/tools/bootstrap.min.js"></script>
+	<script src="/ENI_encheres/public/js/tools/logger.js"></script>
+	<script src="/ENI_encheres/public/js/tools/htmlBuilder.js"></script>
+	<script src="/ENI_encheres/public/js/tools/cookies.js"></script>
+	<script src="/ENI_encheres/public/js/enchere_nouveau.js"></script>
+</body>
+</html>

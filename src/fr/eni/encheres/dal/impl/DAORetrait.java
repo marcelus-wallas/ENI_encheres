@@ -7,13 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.eni.encheres.bo.Retrait;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.Iretrait;
 
 public class DAORetrait implements Iretrait {
-	private static final String CREATE = "INSERT INTO RETRAIT(no_article, rue, code_postal, ville) VALUES(?,?,?,?);";
-	private static final String READ = "SELECT * FROM RETRAIT;";
-	private static final String UPDATE = "UPDATE RETRAIT SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?;";
-	private static final String DELETE = "DELETE FROM RETRAIT WHERE no_article =?;";
+	private static final String CREATE = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES(?,?,?,?);";
+	private static final String READ = "SELECT * FROM RETRAITS;";
+	private static final String UPDATE = "UPDATE RETRAITS SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?;";
+	private static final String DELETE = "DELETE FROM RETRAITS WHERE no_article =?;";
+
+	private static final String DELETERETRAITBYUSERID = "DELETE r FROM RETRAITS JOIN ARTICLES_VENDUS a ON r.no_article = a.no_article JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur WHERE u.no_utilisateur= ?";
 
 	public void create(Retrait retrait) {
 
@@ -25,10 +28,10 @@ public class DAORetrait implements Iretrait {
 			pstmt.setString(4, retrait.getVille());
 			pstmt.executeUpdate();
 
-			/*
-			 * ResultSet rs = pstmt.getGeneratedKeys(); if (rs.next()) {
-			 * retrait.setIdentifiant(rs.getInt(1)); }
-			 */
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				retrait.setNo_article(rs.getInt(1));
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,10 +62,10 @@ public class DAORetrait implements Iretrait {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
-			pstmt.setInt(1, retrait.getNo_article());
-			pstmt.setString(2, retrait.getRue());
-			pstmt.setString(3, retrait.getCode_postal());
-			pstmt.setString(4, retrait.getVille());
+			pstmt.setString(1, retrait.getRue());
+			pstmt.setString(2, retrait.getCode_postal());
+			pstmt.setString(3, retrait.getVille());
+			pstmt.setInt(4, retrait.getNo_article());
 			pstmt.executeUpdate();
 
 			/*
@@ -91,4 +94,17 @@ public class DAORetrait implements Iretrait {
 			e.printStackTrace();
 		}
 	}
+
+	public void deleteAllByUserId(Utilisateur user) {
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(DELETERETRAITBYUSERID,
+					PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, user.getNo_utilisateur());
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

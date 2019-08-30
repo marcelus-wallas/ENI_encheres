@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="/ENI_encheres/public/css/bootstrap.min.css">
+<title>Mon profil</title>
+<link rel="stylesheet" href="/ENI_encheres/public/css/style.css">
+</head>
+<body>
+
+	<!-- JSON responce -->
+	<!--
+
+
+
+    -->
+
+	<!-- top bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="./accueil.html">ENI_encheres</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="./accueil.html">Enchères</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="./encheres_nouveau.html">Vendre un article</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="./compte_mon_profil.html">Mon profil</a></li>
+				<li class="nav-item"><a onclick="deconnexion()"
+					class="nav-link" href="index.html">Déconnexion</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- titre -->
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<h1>Mon profil</h1>
+			</div>
+		</div>
+	</div>
+
+	<!-- Main content -->
+	<div class="container">
+		<div class="row justify-content-md-center" style="padding: 2rem;">
+			<div class="col col-lg-8">
+				<div class="row justify-content-md-center">
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Pseudo :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilPseudo"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Nom :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilNom"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Prénom :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilPrenom"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Email :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilEmail"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Téléphone :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilTelephone"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Rue :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilRue"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Code postal :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilCodePostal"></div>
+					</div>
+					<div class="col-sm-4 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<h6>Ville :</h6>
+					</div>
+					<div class="col-sm-8 d-flex align-items-center flex-column"
+						style="margin-top: 1rem;">
+						<div id="compteMonProfilVille"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row justify-content-md-center">
+		<a href="./compte_edition.html"
+			class="btn btn-outline-success my-2 my-sm-0" role="button">Modifier</a>
+	</div>
+
+	<!-- export -->
+	<script src="/ENI_encheres/public/js/tools/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="/ENI_encheres/public/js/tools/bootstrap.min.js"></script>
+	<script src="/ENI_encheres/public/js/tools/logger.js"></script>
+	<script src="/ENI_encheres/public/js/tools/htmlBuilder.js"></script>
+	<script src="/ENI_encheres/public/js/tools/cookies.js"></script>
+	<script src="/ENI_encheres/public/js/compte_mon_profil.js"></script>
+</body>
+</html>

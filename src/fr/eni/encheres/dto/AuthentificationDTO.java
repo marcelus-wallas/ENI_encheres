@@ -7,17 +7,17 @@ public class AuthentificationDTO {
 
 	private String pseudo;
 	private String email;
-	private String password;
+	private String mot_de_passe;
 	
 	public AuthentificationDTO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AuthentificationDTO(String pseudo, String email, String password) {
+	public AuthentificationDTO(String pseudo, String email, String mot_de_passe) {
 		super();
 		this.pseudo = pseudo;
 		this.email = email;
-		this.password = password;
+		this.mot_de_passe = mot_de_passe;
 	}
 	
 	public String getPseudo() {
@@ -36,19 +36,16 @@ public class AuthentificationDTO {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getmot_de_passe() {
+		return mot_de_passe;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setmot_de_passe(String mot_de_passe) {
+		this.mot_de_passe = mot_de_passe;
 	}
 
 	@Override
 	public String toString() {
-		return "AuthentificationDTO [pseudo=" + pseudo + ", email=" + email + ", password=" + password + "]";
+		return "AuthentificationDTO [pseudo=" + pseudo + ", email=" + email + ", mot_de_passe=" + mot_de_passe + "]";
 	}
-	
-	
-	
 }
